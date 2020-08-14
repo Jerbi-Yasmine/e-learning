@@ -77,27 +77,27 @@
         <!-- ##### Header Area End ##### -->
   <div class="container" style="width: 10cm;height: 13cm;border: solid;border-width: 0.05cm;">
     <h1 style="font-family:candara ">Inscription</h1>
-          <form>
+          <form action="espace.html" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-              <label for="name">Nom d'Utilisateur</label>
-              <input type="text" class="form-control form-control-sm" id="name" >
+              <label for="nom">Nom d'Utilisateur</label>
+              <input type="text" class="form-control form-control-sm" name="nom" >
             </div>
             <div class="form-group">
-              <label for="mail">Adresse E-mail</label>
-              <input type="email" class="form-control form-control-sm" id="mail">
+              <label for="email">Adresse E-mail</label>
+              <input type="email" class="form-control form-control-sm" name="email">
             </div>
             <div class="form-group">
-              <label for="passwd">Mot de Passe</label>
-              <input type="password" class="form-control form-control-sm" id="passwd">
+              <label for="mdp">Mot de Passe</label>
+              <input type="password" class="form-control form-control-sm" name="mdp">
             </div>
             <hr>
             <p>Vous Visiter Le Site en tant que : </p>
             <div class="custom-control custom-radio">
-              <input type="radio" id="etudiant" name="rad" class="custom-control-input">
+              <input type="radio" id="etudiant" name="statut" class="custom-control-input" value="0">
               <label class="custom-control-label" for="etudiant">Etudiant</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="enseignant" name="rad" class="custom-control-input">
+              <input type="radio" id="enseignant" name="statut" class="custom-control-input" value="1">
               <label class="custom-control-label" for="enseignant">Enseignant</label>
             </div></br>
             <button type="submit" class="btn btn-info btn-lg btn-block">S'inscrire</button>
@@ -135,7 +135,7 @@
                 <h1 style="font-family:candara;margin-left: 3.5cm;">Connexion</h1>
   </div>
           <div class="modal-body">
-            <form>
+            <form  >
               <div class="form-group">
                 <label for="mail">Adresse E-mail</label>
                 <input type="text" class="form-control form-control-sm" id="mail" >
@@ -169,4 +169,8 @@
 </body>
 
 </html>
+
+<?php
+include('connexion.php') ;
+?>
 
