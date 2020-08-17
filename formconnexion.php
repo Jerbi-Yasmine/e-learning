@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -62,7 +61,7 @@
                                 <div class="register-login-area">
                                     <a href="register.php" class="btn">Inscription</a>
     
-                                    <a type="button" class="btn active" href="formconnexion.php">Connexion</a>
+                                    <a type="button" class="btn active" href="#">Connexion</a>
     
                                 </div>
     
@@ -75,43 +74,30 @@
         </header>
         <!-- ##### Header Area End ##### -->
         <!-- ##### Header Area End ##### -->
-  <div class="container" style="width: 10cm;height: 15cm;border: solid;border-width: 0.05cm;">
+  <div class="container" style="width: 10cm;height: 10cm;border: solid;border-width: 0.05cm;margin-top:2.5cm;">
     <h1 style="font-family:candara ">Inscription</h1>
-          <form action="register.php" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="nom">Nom d'Utilisateur</label>
-              <input type="text" class="form-control form-control-sm" name="nom" required value="<?php if(isset($_POST['nom'])) echo $_POST['nom'] ;?>">
-              <?php
-              include ("manipulation.php") ;
-              if (inscription()=="a") echo "<p style='color:red;'>Nom d'utilisateur non disponible</p>" ;
-              ?>
-            </div>
+          <form action="formconnexion.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <label for="email">Adresse E-mail</label>
-              <input type="email" class="form-control form-control-sm" name="email" required value="<?php if(isset($_POST['email'])) echo $_POST['email'] ;?> ">
-              <?php
-              if (inscription()=="b") echo "<p style='color:red;'>Ce Compte existe déja</p>" ;
-              ?>
+              <input type="email" class="form-control form-control-sm" name="email">
             </div>
             <div class="form-group">
               <label for="mdp">Mot de Passe</label>
-              <input type="password" class="form-control form-control-sm" name="mdp" required>
-              <?php if (inscription()=="c")
-              echo "<p style='color:red;'>Mot de Passe trop Court</p>" ;
-              ?>
+              <input type="password" class="form-control form-control-sm" name="mdp">
             </div>
             <hr>
-            <p>Vous Visiter Le Site en tant que : </p>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="etudiant" name="statut" class="custom-control-input" value="2" required <?php if(isset($_POST['statut']) && $_POST["statut"]=="2")   echo "checked=\"checked\"" ?>>
-              <label class="custom-control-label" for="etudiant">Etudiant</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="enseignant" name="statut" class="custom-control-input" value="1" <?php if(isset($_POST['statut']) && $_POST["statut"]=="1")   echo "checked=\"checked\"" ?>>
-              <label class="custom-control-label" for="enseignant">Enseignant</label>
-            </div></br>
-            <button type="submit" class="btn btn-info btn-lg btn-block">S'inscrire</button>
-            <a style="margin-left:2cm;text-decoration:underline" href="formconnexion.php">Vous avez déja un compte ?</a>
+
+            <?php 
+    include('session.php');
+    if(authentification())
+    echo"<div class='text-danger' style='margin-left : 1.5cm;'><b>Mot de Passe ou E-mail Incorrecte</b></div>            ";
+
+
+    ?>
+                      <button type="submit" class="btn btn-primary btn-lg btn-block" name="connexion">Connexion</button>
+                      <button type="submit" class="btn btn-success btn-lg btn-block" name="connexion">Inscription</button>
+
+    
           </form>
       </div>
 
@@ -149,14 +135,15 @@
             <form  >
               <div class="form-group">
                 <label for="mail">Adresse E-mail</label>
-                <input type="text" class="form-control form-control-sm" id="mail" >
+                <input type="text" class="form-control form-control-sm" id="mail" required >
               </div>
               <div class="form-group">
                 <label for="passwd">Mot de Passe</label>
-                <input type="password" class="form-control form-control-sm" id="passwd">
+                <input type="password" class="form-control form-control-sm" id="passwd" required>
               </div> 
               <hr>
               <button type="submit" class="btn btn-success btn-lg btn-block">Connexion</button>
+              
             </form>
         </div>
   

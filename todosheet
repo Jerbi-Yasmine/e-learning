@@ -1,0 +1,19 @@
+----> les contraintes de login et register
+        --> forms validation 
+        --> relation avec la base de donne 
+----> Espace Professeur
+        --> visioconference
+        -->ajout des etudiants
+        -->ajout des cours
+        -->ajout des epreuves 
+        -->envoi des commentaires
+----> Espace etudiants
+        --> Accepter l'invitation 
+        --> Repondre au epreuves
+        -->telecharger
+        --> assister
+        --> discuter
+----> Espace Administrateur
+        --> ajouter des cours
+----> Divers
+        --> Compteurs
