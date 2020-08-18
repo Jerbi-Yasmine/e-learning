@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 17 août 2020 à 18:26
+-- Généré le :  mar. 18 août 2020 à 13:38
 -- Version du serveur :  10.1.36-MariaDB
 -- Version de PHP :  7.2.11
 
@@ -57,11 +57,18 @@ CREATE TABLE `invitation` (
 --
 
 CREATE TABLE `matiere` (
-  `id` int(2) NOT NULL,
+  `id` int(200) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prof` varchar(50) NOT NULL,
   `acces` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matiere`
+--
+
+INSERT INTO `matiere` (`id`, `nom`, `prof`, `acces`) VALUES
+(147, 'oriente objet', 'jerbi', '');
 
 -- --------------------------------------------------------
 
@@ -147,7 +154,7 @@ ALTER TABLE `invitation`
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT pour la table `personne`
