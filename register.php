@@ -18,7 +18,10 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -62,7 +65,15 @@
                                 <div class="register-login-area">
                                     <a href="register.php" class="btn">Inscription</a>
     
+<<<<<<< HEAD
+<<<<<<< HEAD:register.php
                                     <a type="button" class="btn active" href="formconnexion.php">Connexion</a>
+=======
+                                    <a type="button" class="btn active" href="#">Connexion</a>
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:formconnexion.php
+=======
+                                    <a type="button" class="btn active" href="formconnexion.php">Connexion</a>
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
     
                                 </div>
     
@@ -75,6 +86,10 @@
         </header>
         <!-- ##### Header Area End ##### -->
         <!-- ##### Header Area End ##### -->
+<<<<<<< HEAD
+<<<<<<< HEAD:register.php
+=======
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
   <div class="container" style="width: 10cm;height: 15cm;border: solid;border-width: 0.05cm;">
     <h1 style="font-family:candara ">Inscription</h1>
           <form action="register.php" method="POST" enctype="multipart/form-data">
@@ -82,7 +97,11 @@
               <label for="nom">Nom d'Utilisateur</label>
               <input type="text" class="form-control form-control-sm" name="nom" required value="<?php if(isset($_POST['nom'])) echo $_POST['nom'] ;?>">
               <?php
+<<<<<<< HEAD
               include ("inscription.php") ;
+=======
+              include ("manipulation.php") ;
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
               if (inscription()=="a") echo "<p style='color:red;'>Nom d'utilisateur non disponible</p>" ;
               ?>
             </div>
@@ -112,6 +131,35 @@
             </div></br>
             <button type="submit" class="btn btn-info btn-lg btn-block">S'inscrire</button>
             <a style="margin-left:2cm;text-decoration:underline" href="formconnexion.php">Vous avez déja un compte ?</a>
+<<<<<<< HEAD
+=======
+  <div class="container" style="width: 10cm;height: 10cm;border: solid;border-width: 0.05cm;margin-top:2.5cm;">
+    <h1 style="font-family:candara ">Inscription</h1>
+          <form action="formconnexion.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="email">Adresse E-mail</label>
+              <input type="email" class="form-control form-control-sm" name="email">
+            </div>
+            <div class="form-group">
+              <label for="mdp">Mot de Passe</label>
+              <input type="password" class="form-control form-control-sm" name="mdp">
+            </div>
+            <hr>
+
+            <?php 
+    include('session.php');
+    if(authentification())
+    echo"<div class='text-danger' style='margin-left : 1.5cm;'><b>Mot de Passe ou E-mail Incorrecte</b></div>            ";
+
+
+    ?>
+                      <button type="submit" class="btn btn-primary btn-lg btn-block" name="connexion">Connexion</button>
+                      <button type="submit" class="btn btn-success btn-lg btn-block" name="connexion">Inscription</button>
+
+    
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:formconnexion.php
+=======
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
           </form>
       </div>
 
@@ -149,6 +197,17 @@
             <form  >
               <div class="form-group">
                 <label for="mail">Adresse E-mail</label>
+<<<<<<< HEAD
+                <input type="text" class="form-control form-control-sm" id="mail" required >
+              </div>
+              <div class="form-group">
+                <label for="passwd">Mot de Passe</label>
+                <input type="password" class="form-control form-control-sm" id="passwd" required>
+              </div> 
+              <hr>
+              <button type="submit" class="btn btn-success btn-lg btn-block">Connexion</button>
+              
+=======
                 <input type="text" class="form-control form-control-sm" id="mail" >
               </div>
               <div class="form-group">
@@ -157,6 +216,7 @@
               </div> 
               <hr>
               <button type="submit" class="btn btn-success btn-lg btn-block">Connexion</button>
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
             </form>
         </div>
   

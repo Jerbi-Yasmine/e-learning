@@ -1,3 +1,6 @@
+----> les contraintes de login et register
+        --> forms validation 
+        --> relation avec la base de donne 
 ----> Espace Professeur
         --> visioconference
         -->ajout des etudiants
@@ -12,3 +15,6 @@
         --> discuter
 ----> Espace Administrateur
         --> ajouter des cours
+
+----> Divers
+        --> Compteurs

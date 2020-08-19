@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 <?php
 //error_reporting(0);
 include('session.php') ;
-=======
-<?php include('session.php') ;
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 include('cours-bd.php') ;
 require('connexion.php'); ?> 
 <!DOCTYPE html>
@@ -31,11 +27,7 @@ require('connexion.php'); ?>
 <body>
 
     <!-- ##### Header Area Start ##### -->
-<<<<<<< HEAD
   <header class="header-area">
-=======
-    <header class="header-area">
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
         <!-- Navbar Area -->
         <div class="clever-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -64,7 +56,6 @@ require('connexion.php'); ?>
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
-<<<<<<< HEAD
 <<<<<<< HEAD:espace-prof1.php
     <li><a <?php if(statut()==1):?> href="espace-prof1.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
 
@@ -74,20 +65,12 @@ require('connexion.php'); ?>
 
 
                             
-=======
-                                <li><a href="espace-prof1.php">Mon Espace</a></li>
-
-                            </ul>
-
-
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
                             <!-- Register / Login -->
 
                             <!-- Register / Login -->
                             <div class="login-state d-flex align-items-center">
                                 <div class="user-name mr-30">
                                     <div class="dropdown">
-<<<<<<< HEAD
                                         <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte()) echo $_SESSION['nom'];?></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
                                             <a class="dropdown-item" href="profile.html">Profile</a>
@@ -98,14 +81,6 @@ require('connexion.php'); ?>
                                             <a type="submit" href="acceuil.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
           
 >>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:espace-prof1-ajout.php
-=======
-                                        <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nom']?></a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                            <a class="dropdown-item" href="groupes.php">Mes groupes</a>
-                                            <a class="dropdown-item" href="profile.php">Profile</a>
-                                            <a class="dropdown-item" href="acceuil.php">Déconnexion</a>
-
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +105,6 @@ require('connexion.php'); ?>
                     </div>
                     <div class="collapse multi-collapse" id="creation">
                         <div class="container" style="padding:0.5cm;">
-<<<<<<< HEAD
 <<<<<<< HEAD:espace-prof1.php
                             <form action="espace-prof2.php" method="POST">
                                 <div class="row">
@@ -153,16 +127,6 @@ require('connexion.php'); ?>
                                 <div style="margin-top: 0.2cm;padding-left: 10.5cm;">
                                     <button type="submit" class="btn btn-warning btn-lg" aria-hidden="true" name="btajout"><b>Ajouter</b></button>
 >>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:espace-prof1-ajout.php
-=======
-                            <form action="espace-prof1.php" method="POST">
-                                <div class="row">
-                                  <div class="col">
-                                    <input type="text" class="form-control" placeholder="Donner un titre pour la Matiére" name="matiere">
-                                  </div>
-                                </div>
-                                <div style="margin-top: 0.2cm;padding-left: 10.5cm;">
-                                    <button type="submit" class="btn btn-warning btn-lg" aria-hidden="true"><b>Ajouter</b></button>
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 
                                 </div>
 
@@ -184,7 +148,6 @@ require('connexion.php'); ?>
 
         <div class="row">
             <!-- Single Blog Area -->
-<<<<<<< HEAD
 <<<<<<< HEAD:espace-prof1.php
            <?php
            ajout_matiere();
@@ -212,21 +175,12 @@ require('connexion.php'); ?>
             <?php
             if(isset($_POST['btajout']))
 
-=======
-           <?php
-           ajout_matiere();
-           $reponse =$bd->query("SELECT matiere FROM personne WHERE nom= '" . $_SESSION['nom'] . "' ");
-             while ($entree = $reponse->fetch()) 
-            {
-                $matiere = $entree['matiere'] ;
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
                 echo "<div class='col-12 col-lg-6'>
                 <div class='single-blog-area mb-100 wow fadeInUp' data-wow-delay='250ms'>
                     <img src='img/blog-img/1.jpg' alt=''>
                     // Blog Content 
                     <div class='blog-content'>
                         <a href='#' class='blog-headline'>
-<<<<<<< HEAD
                             <h4>Orienté Objet </h4>
                         </a>
                         <div class='meta d-flex align-items-center'>
@@ -238,17 +192,6 @@ require('connexion.php'); ?>
             ?> 
             
 >>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:espace-prof1-ajout.php
-=======
-                            <h4>$matiere</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>";
-       
-            }
-            ?> 
-         
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
             </div>
 
 
@@ -265,15 +208,11 @@ require('connexion.php'); ?>
                 <div class="col-12">
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-<<<<<<< HEAD
 <<<<<<< HEAD:espace-prof1.php
                         <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
 =======
                         <a href="login-acceuil"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
 >>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:espace-prof1-ajout.php
-=======
-                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
                     </div>
                 </div>
             </div>
@@ -297,8 +236,4 @@ require('connexion.php'); ?>
     <script src="js/active.js"></script>
 </body>
 
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce

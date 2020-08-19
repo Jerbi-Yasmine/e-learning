@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
+<<<<<<< HEAD
 -- Généré le :  mer. 19 août 2020 à 13:31
+=======
+-- Généré le :  mar. 18 août 2020 à 13:38
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 -- Version du serveur :  10.1.36-MariaDB
 -- Version de PHP :  7.2.11
 
@@ -47,8 +51,12 @@ CREATE TABLE `invitation` (
   `id` int(3) NOT NULL,
   `etudiant` varchar(50) NOT NULL,
   `matiere` varchar(50) NOT NULL,
+<<<<<<< HEAD
   `prof` varchar(50) NOT NULL,
   `acces` int(2) NOT NULL DEFAULT '0'
+=======
+  `prof` varchar(50) NOT NULL
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -69,11 +77,15 @@ CREATE TABLE `matiere` (
 --
 
 INSERT INTO `matiere` (`id`, `nom`, `prof`, `acces`) VALUES
+<<<<<<< HEAD
 (188, 'eee', 'yasmina', ''),
 (189, 'eee', 'yasmina', ''),
 (190, 'oriente objet', 'yasmina', ''),
 (191, 'oriente objet', 'yasmina', ''),
 (192, 'lkjh', 'yasmina', '');
+=======
+(147, 'oriente objet', 'jerbi', '');
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 
 -- --------------------------------------------------------
 
@@ -84,15 +96,23 @@ INSERT INTO `matiere` (`id`, `nom`, `prof`, `acces`) VALUES
 CREATE TABLE `personne` (
   `id` int(15) NOT NULL,
   `email` varchar(50) NOT NULL,
+<<<<<<< HEAD
   `mdp` varchar(300) NOT NULL,
   `nom` varchar(30) NOT NULL,
   `statut` int(2) NOT NULL
+=======
+  `mdp` varchar(30) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `statut` int(2) NOT NULL,
+  `matiere` varchar(3000) NOT NULL
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `personne`
 --
 
+<<<<<<< HEAD
 INSERT INTO `personne` (`id`, `email`, `mdp`, `nom`, `statut`) VALUES
 (1, 'yasmine.jerbi@ensi-uma.tn', '1234567', 'yasmine', 2),
 (2, 'firas@gmail.com', '14', 'firas', 2),
@@ -121,6 +141,24 @@ INSERT INTO `personne` (`id`, `email`, `mdp`, `nom`, `statut`) VALUES
 (25, 'ss@lh.gg', '$2y$10$Lg/iQaNUWsCSTKTyHjRw7OBWL/m6lBzfN2jugedP.2LYnQLFNvI1K', 'sx', 2),
 (26, 'yasmine@gmail.com', '$2y$10$74u74LDiqVB6xq0PYiZQH.ThYaMRYilS6YiZqgSHWCezanQIvRcHC', 'yasmina', 1),
 (27, 'yasmine1@gmail.com', '$2y$10$6C6LCQ7fZcCF9gBr2eVutuHsWQB1sXoXdVDsKEZDmav.YgcMFjk9u', 'yasmina2', 1);
+=======
+INSERT INTO `personne` (`id`, `email`, `mdp`, `nom`, `statut`, `matiere`) VALUES
+(1, 'yasmine.jerbi@ensi-uma.tn', '1234567', 'yasmine', 2, ''),
+(2, 'firas@gmail.com', '14', 'firas', 2, ''),
+(3, 'tarak3072@yahoo.fr', '11', 'jerbi', 1, ''),
+(4, 'ytre@ihlg.g', 'a', 'ddddddd', 2, ''),
+(5, 'yt@gmail.yn', '147852369', 'hhh', 2, ''),
+(6, 'imed@gmail.com', '1245789663', 'imed', 1, 'oriente objet'),
+(7, 'amina@gmail.com', '14523698', 'amina', 2, ''),
+(8, 'amir@yahoo.fr', '145236987', 'amir', 2, ''),
+(9, 'dlkcl@krf.gg', '145236987', 'dddddddlkij', 1, ''),
+(10, 'dlkcl@krf.ggt', 'mpoiuyt5555', 'hjk', 1, ''),
+(11, 'a@gmail.com', '145236987', 'aaa', 2, ''),
+(12, 'offfffffflh@llh.hg', '14523698785', 'b', 1, ''),
+(13, 'amina@gmail.comk', '785412369', 'aaalkj', 1, ''),
+(14, 'dd@kfkf.ffd', '145236987', 'e', 2, ''),
+(15, 'gg@jj.hh', '147852369', 'gg', 1, '');
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 
 --
 -- Index pour les tables déchargées
@@ -170,13 +208,21 @@ ALTER TABLE `invitation`
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
+<<<<<<< HEAD
   MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
+=======
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 
 --
 -- AUTO_INCREMENT pour la table `personne`
 --
 ALTER TABLE `personne`
+<<<<<<< HEAD
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+=======
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+>>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
