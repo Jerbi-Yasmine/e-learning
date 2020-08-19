@@ -35,7 +35,7 @@
                     <nav class="classy-navbar justify-content-between" id="cleverNav">
     
                         <!-- Logo -->
-                        <a class="nav-brand" href="acceuil.html"><img src="img\Logoo.jpg" alt=""></a>
+                        <a class="nav-brand" href="acceuil.php"><img src="img\Logoo.jpg" alt=""></a>
     
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -53,16 +53,16 @@
                             <!-- Nav Start -->
                             <div id="a" class="classynav">
                                 <ul>
-                                    <li ><a href="acceuil.html">Acceuil</a></li>
-                                    <li><a href="cours.html">Cours en ligne</a></li>
+                                    <li ><a href="acceuil.php">Acceuil</a></li>
+                                    <li><a href="cours.php">Cours en ligne</a></li>
                                 </ul>
 
     
                                 <!-- Register / Login -->
                                 <div class="register-login-area">
-                                    <a href="register.html" class="btn">Inscription</a>
+                                    <a href="register.php" class="btn">Inscription</a>
     
-                                    <a type="button" class="btn active" data-toggle="modal" data-target="#login">Connexion</a>
+                                    <a type="button" class="btn active" href="formconnexion.php">Connexion</a>
     
                                 </div>
     
@@ -75,32 +75,43 @@
         </header>
         <!-- ##### Header Area End ##### -->
         <!-- ##### Header Area End ##### -->
-  <div class="container" style="width: 10cm;height: 13cm;border: solid;border-width: 0.05cm;">
+  <div class="container" style="width: 10cm;height: 15cm;border: solid;border-width: 0.05cm;">
     <h1 style="font-family:candara ">Inscription</h1>
-          <form>
+          <form action="register.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-              <label for="name">Nom d'Utilisateur</label>
-              <input type="text" class="form-control form-control-sm" id="name" >
+              <label for="nom">Nom d'Utilisateur</label>
+              <input type="text" class="form-control form-control-sm" name="nom" required value="<?php if(isset($_POST['nom'])) echo $_POST['nom'] ;?>">
+              <?php
+              include ("inscription.php") ;
+              if (inscription()=="a") echo "<p style='color:red;'>Nom d'utilisateur non disponible</p>" ;
+              ?>
             </div>
             <div class="form-group">
-              <label for="mail">Adresse E-mail</label>
-              <input type="email" class="form-control form-control-sm" id="mail">
+              <label for="email">Adresse E-mail</label>
+              <input type="email" class="form-control form-control-sm" name="email" required value="<?php if(isset($_POST['email'])) echo $_POST['email'] ;?> ">
+              <?php
+              if (inscription()=="b") echo "<p style='color:red;'>Ce Compte existe déja</p>" ;
+              ?>
             </div>
             <div class="form-group">
-              <label for="passwd">Mot de Passe</label>
-              <input type="password" class="form-control form-control-sm" id="passwd">
+              <label for="mdp">Mot de Passe</label>
+              <input type="password" class="form-control form-control-sm" name="mdp" required>
+              <?php if (inscription()=="c")
+              echo "<p style='color:red;'>Mot de Passe trop Court</p>" ;
+              ?>
             </div>
             <hr>
             <p>Vous Visiter Le Site en tant que : </p>
             <div class="custom-control custom-radio">
-              <input type="radio" id="etudiant" name="rad" class="custom-control-input">
+              <input type="radio" id="etudiant" name="statut" class="custom-control-input" value="2" required <?php if(isset($_POST['statut']) && $_POST["statut"]=="2")   echo "checked=\"checked\"" ?>>
               <label class="custom-control-label" for="etudiant">Etudiant</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="enseignant" name="rad" class="custom-control-input">
+              <input type="radio" id="enseignant" name="statut" class="custom-control-input" value="1" <?php if(isset($_POST['statut']) && $_POST["statut"]=="1")   echo "checked=\"checked\"" ?>>
               <label class="custom-control-label" for="enseignant">Enseignant</label>
             </div></br>
             <button type="submit" class="btn btn-info btn-lg btn-block">S'inscrire</button>
+            <a style="margin-left:2cm;text-decoration:underline" href="formconnexion.php">Vous avez déja un compte ?</a>
           </form>
       </div>
 
@@ -118,7 +129,7 @@
                 <div class="col-12">
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="acceuil.html"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
+                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
                     </div>
                 </div>
             </div>
@@ -135,7 +146,7 @@
                 <h1 style="font-family:candara;margin-left: 3.5cm;">Connexion</h1>
   </div>
           <div class="modal-body">
-            <form>
+            <form  >
               <div class="form-group">
                 <label for="mail">Adresse E-mail</label>
                 <input type="text" class="form-control form-control-sm" id="mail" >
@@ -169,4 +180,6 @@
 </body>
 
 </html>
+
+
 

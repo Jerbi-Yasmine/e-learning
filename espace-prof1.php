@@ -1,3 +1,8 @@
+<?php
+//error_reporting(0);
+include('session.php') ;
+include('cours-bd.php') ;
+require('connexion.php'); ?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +27,7 @@
 <body>
 
     <!-- ##### Header Area Start ##### -->
-    <header class="header-area">
+  <header class="header-area">
         <!-- Navbar Area -->
         <div class="clever-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -30,7 +35,7 @@
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="acceuil.html"><img src="img/logoo.jpg" alt=""></a>
+                    <a class="nav-brand" href="acceuil.php"><img src="img/logoo.jpg" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -49,8 +54,10 @@
                          <!-- Nav Start -->
                          <div id="a" class="classynav">
                             <ul>
-                                <li ><a href="acceuil.html">Acceuil</a></li>
-                                <li><a href="cours.html">Cours en ligne</a></li>
+                                <li ><a href="acceuil.php">Acceuil</a></li>
+                                <li><a href="cours.php">Cours en ligne</a></li>
+    <li><a <?php if(statut()==1):?> href="espace-prof1.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
+
                             </ul>
 
 
@@ -60,17 +67,16 @@
                             <div class="login-state d-flex align-items-center">
                                 <div class="user-name mr-30">
                                     <div class="dropdown">
-                                        <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mon éspace</a>
+                                        <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte()) echo $_SESSION['nom'];?></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                            <a class="dropdown-item" href="groupes.html">Mes groupes</a>
                                             <a class="dropdown-item" href="profile.html">Profile</a>
-                                            <a class="dropdown-item" href="acceuil.html">Déconnexion</a>
-
+                                            <a type="submit" href="deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
+                
                                         </div>
                                     </div>
                                 </div>
                                 <div class="userthumb">
-                                    <img src="img/bg-img/t1.png" alt="">
+                                    <img src="img\divers\profile.jpg" alt="">
                                 </div>
                             </div>
 
@@ -85,16 +91,30 @@
                     <!-- Hero Content -->
                     <div class="hero-content text-center">
                         <h2 style="font-family:candara">Le Bon Enseignant Fait Le Bon Eleve</h2>
+                        <button  class="btn clever-btn " data-toggle="collapse" href="#creation" >Créer un Groupe</button>
+
                     </div>
+                    <div class="collapse multi-collapse" id="creation">
+                        <div class="container" style="padding:0.5cm;">
+                            <form action="espace-prof2.php" method="POST">
+                                <div class="row">
+                                  <div class="col">
+                                    <input type="text" class="form-control" placeholder="Donner un titre pour la Matiére" name="matiere" required>
+                                  </div>
+                                </div>
+                                <div style="margin-top: 0.2cm;padding-left: 10.5cm;">
+                                    <button type="submit" class="btn btn-warning btn-lg" aria-hidden="true" ><b>Ajouter</b></button>
+
+                                </div>
+
+                              </form>
+                        </div>
+                        
+                        </div>
                 </div>
             </div>
         </div>
-    <div class="container" style="padding:1cm;margin-left:5cm">
-    
-        <button class="btn btn-primary btn-lg btn-block  "><b style="font-family: candara;color: white;">Créer Un Groupe</b></button></div>
-
-
-        
+       
     </section>
     <!-- ##### Hero Area End ##### -->
                        
@@ -105,23 +125,34 @@
 
         <div class="row">
             <!-- Single Blog Area -->
-            <div class="col-12 col-lg-6">
-                <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="250ms">
-                    <img src="img/blog-img/1.jpg" alt="">
-                    <!-- Blog Content -->
-                    <div class="blog-content">
-                        <a href="#" class="blog-headline">
-                            <h4>Orienté Objet </h4>
+           <?php
+           ajout_matiere();
+           ecriture_fichier();
+           $reponse =$bd->query("SELECT nom FROM matiere WHERE prof= '" . $_SESSION['nom'] . "' ");
+             while ($entree = $reponse->fetch()) 
+            {
+                $matiere = $entree['nom'] ;
+                $redirection = $matiere.$_SESSION['nom'].".php" ;
+                echo "<div class='col-12 col-lg-6'>
+                <div class='single-blog-area mb-100 wow fadeInUp' data-wow-delay='250ms'>
+                    <img style='width:1000px;height:300px'src='img\matiere.jpg' alt=''>
+                    <div class='blog-content'>
+                        <a href='".$redirection."' class='blog-headline'>
+                            <h3 style='margin-left:3.5cm;'>".ucwords($matiere)."</h3>
                         </a>
-                        <div class="meta d-flex align-items-center">
-                            <a href="#">ii1E</a>
-                        </div>
                     </div>
                 </div>
-            </div>
+            </div>";
+       
+            }
+            ?> 
+         
             </div>
 
 
+        
+        
+                
 </section>
   <!-- ##### Footer Area Start ##### -->
   <footer class="footer-area">
@@ -132,7 +163,7 @@
                 <div class="col-12">
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="acceuil.html"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
+                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
                     </div>
                 </div>
             </div>
