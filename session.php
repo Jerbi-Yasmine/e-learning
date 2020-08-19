@@ -6,14 +6,9 @@ function authentification()
 
    if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['connexion']))
    {
-<<<<<<< HEAD
         $util =$_POST['email'] ;
         $reponse =$bd->query("SELECT mdp FROM personne WHERE email= '" . $util . "' ");
        /*$requete = $bd -> prepare('SELECT * FROM personne where email=:email AND mdp=:mdp') ;
-=======
-
-       $requete = $bd -> prepare('SELECT * FROM personne where email=:email AND mdp=:mdp') ;
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
        $requete->execute(array('email'=>$_POST['email'],'mdp'=>$_POST['mdp'])) ;
        if(($requete->rowCount())!=0)
        {
@@ -23,7 +18,6 @@ function authentification()
                $_SESSION['utilisateur'] = $_POST['email'];
                header("location:acceuil.php");
    
-<<<<<<< HEAD
        }*/
        $entree = $reponse->fetch() ;
 
@@ -37,21 +31,11 @@ function authentification()
                 header("location:acceuil.php");
     
         }
-=======
-       }
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
        else 
        { return(true) ;
            }
 
-<<<<<<< HEAD
 }}
-=======
-
-       }
-
-}
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 authentification();
 function est_connecte()
 {

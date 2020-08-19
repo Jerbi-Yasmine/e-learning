@@ -17,22 +17,15 @@
         $data['file_url']
         
     }*/
-<<<<<<< HEAD
 
     function ajout_matiere()
     {
        /* include('connexion.php') ;
-=======
-    function ajout_matiere()
-    {
-        include('connexion.php') ;
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
         if(isset($_POST['matiere']))
         {
             $requete="UPDATE personne SET matiere= '" . $_POST['matiere'] . "' WHERE nom= '" . $_SESSION['nom'] . "' " ;
             $reponse = $bd->exec($requete);
             
-<<<<<<< HEAD
         }*/
         if(!empty($_POST['matiere']))
         {
@@ -300,9 +293,5 @@
 
     }}
 
-=======
-        }
-    }
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 
 ?>

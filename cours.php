@@ -28,16 +28,8 @@ include('session.php');
         <div class="spinner"></div>
     </div>
 <?php if ((!est_connecte())):?>
-<<<<<<< HEAD:cours.php
         <<!-- Navbar Area -->
         <div class="clever-main-menu">
-=======
-        <!-- ##### Header Area Start ##### -->
-        <header class="header-area">
-
-            <!-- Navbar Area -->
-            <div class="clever-main-menu">
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:cours.html
                 <div class="classy-nav-container breakpoint-off">
                     <!-- Menu -->
                     <nav class="classy-navbar justify-content-between" id="cleverNav">
@@ -115,11 +107,7 @@ include('session.php');
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
-<<<<<<< HEAD:cours.php
                                 <li><a  <?php if(statut()==1):?> href="espace-prof1.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
-=======
-                                <li><a href="<?php if(statut()==1) echo 'espace-prof1.php'; if (statut()==2) echo 'espace-etudiant.php'; if (statut()==0) echo 'administrateur.php'; ?> ">Mon Espace&nbsp;&nbsp;</a></li>
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:cours.html
 
                             </ul>
 

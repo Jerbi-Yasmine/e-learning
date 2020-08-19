@@ -19,14 +19,7 @@
 
 </head>
 <body>
-<<<<<<< HEAD
   
-=======
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="spinner"></div>
-    </div>
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 
         <!-- ##### Header Area Start ##### -->
         <header class="header-area">
@@ -65,15 +58,7 @@
                                 <div class="register-login-area">
                                     <a href="register.php" class="btn">Inscription</a>
     
-<<<<<<< HEAD
                                     <a type="button" class="btn active" href="#">Connexion</a>
-=======
-<<<<<<< HEAD:register.php
-                                    <a type="button" class="btn active" href="formconnexion.php">Connexion</a>
-=======
-                                    <a type="button" class="btn active" href="#">Connexion</a>
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:formconnexion.php
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
     
                                 </div>
     
@@ -86,48 +71,6 @@
         </header>
         <!-- ##### Header Area End ##### -->
         <!-- ##### Header Area End ##### -->
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:register.php
-  <div class="container" style="width: 10cm;height: 15cm;border: solid;border-width: 0.05cm;">
-    <h1 style="font-family:candara ">Inscription</h1>
-          <form action="register.php" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="nom">Nom d'Utilisateur</label>
-              <input type="text" class="form-control form-control-sm" name="nom" required value="<?php if(isset($_POST['nom'])) echo $_POST['nom'] ;?>">
-              <?php
-              include ("inscription.php") ;
-              if (inscription()=="a") echo "<p style='color:red;'>Nom d'utilisateur non disponible</p>" ;
-              ?>
-            </div>
-            <div class="form-group">
-              <label for="email">Adresse E-mail</label>
-              <input type="email" class="form-control form-control-sm" name="email" required value="<?php if(isset($_POST['email'])) echo $_POST['email'] ;?> ">
-              <?php
-              if (inscription()=="b") echo "<p style='color:red;'>Ce Compte existe déja</p>" ;
-              ?>
-            </div>
-            <div class="form-group">
-              <label for="mdp">Mot de Passe</label>
-              <input type="password" class="form-control form-control-sm" name="mdp" required>
-              <?php if (inscription()=="c")
-              echo "<p style='color:red;'>Mot de Passe trop Court</p>" ;
-              ?>
-            </div>
-            <hr>
-            <p>Vous Visiter Le Site en tant que : </p>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="etudiant" name="statut" class="custom-control-input" value="2" required <?php if(isset($_POST['statut']) && $_POST["statut"]=="2")   echo "checked=\"checked\"" ?>>
-              <label class="custom-control-label" for="etudiant">Etudiant</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="enseignant" name="statut" class="custom-control-input" value="1" <?php if(isset($_POST['statut']) && $_POST["statut"]=="1")   echo "checked=\"checked\"" ?>>
-              <label class="custom-control-label" for="enseignant">Enseignant</label>
-            </div></br>
-            <button type="submit" class="btn btn-info btn-lg btn-block">S'inscrire</button>
-            <a style="margin-left:2cm;text-decoration:underline" href="formconnexion.php">Vous avez déja un compte ?</a>
-=======
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
   <div class="container" style="width: 10cm;height: 10cm;border: solid;border-width: 0.05cm;margin-top:2.5cm;">
     <h1 style="font-family:candara ">Inscription</h1>
           <form action="formconnexion.php" method="POST" enctype="multipart/form-data">
@@ -152,10 +95,6 @@
                       <button type="submit" class="btn btn-success btn-lg btn-block" name="connexion">Inscription</button>
 
     
-<<<<<<< HEAD
-=======
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce:formconnexion.php
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
           </form>
       </div>
 
