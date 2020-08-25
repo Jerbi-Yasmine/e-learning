@@ -38,7 +38,7 @@
                                 <nav class='classy-navbar justify-content-between' id='cleverNav'>
                 
                                     <!-- Logo -->
-                                    <a class='nav-brand' href='../../acceuil.php'><img src='img/logoo.jpg' alt=''></a>
+                                    <a class='nav-brand' href='acceuil.php'><img src='img/logoo.jpg' alt=''></a>
                 
                                     <!-- Navbar Toggler -->
                                     <div class='classy-navbar-toggler'>

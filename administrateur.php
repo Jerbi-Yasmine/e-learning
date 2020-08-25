@@ -72,7 +72,7 @@ require('includes/connexion.php');
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte() && statut()!=0) echo $_SESSION['nom']; else echo "Administrateur";?></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                            <a class="dropdown-item" href="profile.html">Profile</a>
+                                            <a class="dropdown-item" href="profile.php">Profile</a>
                                             <a type="submit" href="deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
                 
                                         </div>

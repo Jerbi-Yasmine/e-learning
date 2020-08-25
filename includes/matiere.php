@@ -9,7 +9,7 @@ $reponse =$bd->query("SELECT id,nom FROM matiere WHERE prof= '" . $_SESSION['nom
      <div class='single-blog-area mb-100 wow fadeInUp' data-wow-delay='250ms'>
          <img style='width:1000px;height:300px'src='img/fond.png' alt=''>
          <div class='blog-content'>
-             <a href='matiere.php/m/$id' class='blog-headline'>
+             <a href='matiere.php?id=$id' class='blog-headline'>
                  <h3 style='margin-left:3.5cm;'>".ucwords($matiere)."</h3>
              </a>
          </div>
