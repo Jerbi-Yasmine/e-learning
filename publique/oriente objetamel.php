@@ -1,67 +1,4 @@
-<?php
-/*function insertion()
-{
-    $name=$_FILES['fichier']['name'] ;
-    $tmp =$_FILES['fichier']['tmp_name'];
-    $chemin = 'cours/'.$name ;
-    if(move_uploaded_file($tmp,$chemin))
-    {
-        include('connexion.php') ;
-        $requete = $bd->prepare('INSERT INTO cours (matiere,email,acces,nom,url)
-        VALUES(:email, :mdp, :nom, :statut)');
-        $requete->execute(array('email' => $_POST['email'],'mdp' => $_POST['mdp'],
-        'nom' => $_POST['nom'], 'statut' => $_POST['statut']));
-
-
-
-        $data['file_url']
-        
-    }*/
-
-    function ajout_matiere()
-    {
-       /* include('connexion.php') ;
-        if(isset($_POST['matiere']))
-        {
-            $requete="UPDATE personne SET matiere= '" . $_POST['matiere'] . "' WHERE nom= '" . $_SESSION['nom'] . "' " ;
-            $reponse = $bd->exec($requete);
-            
-        }*/
-        if(!empty($_POST['matiere']))
-        {
-            include('connexion.php') ;
-            $requete = $bd->prepare('INSERT INTO matiere (nom,prof)
-            VALUES(:nom, :prof)');
-            $requete->execute(array('nom' => $_POST['matiere'],'prof' => $_SESSION['nom']));
-           
-        
-
-            
-    }
-}
-    function creation_page()
-    {
-        if(isset($_POST['matiere']))
-        {
-            $matiere = $_POST['matiere'] ;
-            $nom = $_SESSION['nom'] ;
-            $fichier = "$matiere"."$nom".".php" ;
-            if(!file_exists($fichier))
-        {
-            touch($fichier) ;
-        }
-       
-        return $fichier;
-        }
-       
-    }
-    function ecriture_fichier()
-    {
-        if(file_exists(creation_page()))
-       {
-            $id_fichier = fopen(creation_page(),"w") ;
-        if(!$id_fichier) echo"erreur d'acces ";
-        $chaine = "<?php include('session.php') ; ?>
+<?php include('includes/session.php') ; ?>
         <!DOCTYPE html>
         <html lang='en'>
         
@@ -125,17 +62,17 @@
                                     <div class='login-state d-flex align-items-center'>
                                         <div class='user-name mr-30'>
                                             <div class='dropdown'>
-                                                <a class='dropdown-toggle' href='#' role='button'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><?php if (est_connecte()) echo '".$_SESSION['nom']."';?></a>
+                                                <a class='dropdown-toggle' href='#' role='button'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><?php if (est_connecte()) echo 'amel';?></a>
                                                 <div class='dropdown-menu dropdown-menu-right' aria-labelledby='userName'>
                                                     <a class='dropdown-item' href='espace-prof1.php'>Mes groupes</a>
                                                     <a class='dropdown-item' href='profile.php'>Profile</a>
-                                                    <a class='dropdown-item' href='acceuil.php'>Déconnexion</a>
+                                                    <a class='dropdown-item' href='deconnexion.php'>Déconnexion</a>
         
                                                 </div>
                                             </div>
                                         </div>
                                         <div class='userthumb'>
-                                            <img src='img/bg-img/t1.png' alt=''>
+                                            <img src='img\divers\profile.jpg' alt=''>
                                         </div>
                                     </div>
         
@@ -148,7 +85,13 @@
                 <!-- ##### Catagory Area Start ##### -->
                 <div class='clever-catagory blog-details bg-img d-flex align-items-center justify-content-center p-3 height-400' style='background-color:#CF3868;'>
                     <div class='blog-details-headline'>
-                        <h3><?php echo'".$_POST['matiere']."'?></h3>
+                        <h3><?php echo'aaa' ;             $id_fichier = fopen("temp.txt","a+") ; $r ='\n';
+                                fwrite($id_fichier,"bbb");
+                                fwrite($id_fichier,$r);
+
+
+
+                        ?></h3>
                     </div>
                 </div>
                 <!-- ##### Catagory Area End ##### -->
@@ -160,14 +103,15 @@
                             <div class='post-a-comments mb-70' style='margin-top: 0.5cm;'>
                                 <button type='button' class='btn btn-light btn-lg btn-block' data-toggle='collapse' href='#choix1'><h5 style='color: black;'><i class='fa fa-user' aria-hidden='true'></i>&nbsp;&nbsp;Ajouter des Etudiants</h5></button>
                                 <div class='collapse' id='choix1'>
-                                    <form>
+                                    <form action="a.php">
                                         <div class='form-group'>
                                           <label for='mail'>Adresse E-mail</label>
                                           <input type='text' class='form-control form-control-sm' id='name' >
                                         </div>
                                         <div  style='padding-left: 4.3cm;'>
-                                            <button type='boutton' class='btn btn-outline-success'>Envoyer</button>
+                                            <button type='submit' class='btn btn-outline-secondary'>Envoyer</button>
                                         </div>
+                                    </form>
                                     </div>
             
                                 
@@ -175,11 +119,18 @@
                                 ><h5><i class='fa fa-folder' aria-hidden='true'></i>&nbsp;&nbsp; Ajouter un cours</h5></button>
                                
                                 <div class='collapse' id='choix2'>
-                                    <form class='md-form' id='formfichier'>
-                                        <input type='file' hidden='hidden' id='fich'>
-                                            <label for='fich' id='bouton' style='margin-top: 0.3cm;padding-left: 6cm;'><img src='iplus.png'>
-                                        </label>
-                                        
+                                    <form class='md-form' id='formfichier' method="POST" action="documents.php" enctype="multipart/form-data">
+                                        <input type='file' hidden='hidden' id='fich1' name="fich1[]" multiple>
+                                            <label for='fich1' id='bouton' style='margin-top: 0.3cm;padding-left: 4.9cm;'><img src='img\iplus.png'>
+
+                                        </label></br>
+                                        <span style='margin-left:4cm ;font-size:0.4cm;' id='fichier1'></span></br></br>
+                                        <div>
+                                    <input type='text' class='form-control' placeholder='Donner un titre' name='titre1' required>
+                                  </div>                                   </br>     
+                                  <div  style='padding-left: 4.7cm;'>
+                                            <button  type="submit" class='btn btn-outline-secondary'>Envoyer</button>
+                                        </div></br>
                                       </form>
                                     </div>
             
@@ -192,51 +143,69 @@
                                     </div>
             
                                 <button type='button' class='btn btn-btn btn-secondary btn-lg btn-block' data-toggle='collapse' href='#choix4'
-                                ><h5><i class='fa fa-file' aria-hidden='true'></i>&nbsp;&nbsp;Lancer Un Devoir</h5></button>
+                                ><h5><i class='fa fa-file' aria-hidden='true' multiple></i>&nbsp;&nbsp;Lancer Un Devoir</h5></button>
             
                                 <div class='collapse' id='choix4'>
-                                    <form class='md-form' id='formfichier'>
-                                        <input type='file' hidden='hidden' id='fich'>
-                                            <label for='fich' id='bouton' style='padding-left: 4.7cm;'><img src='iplus.png'>
-                                        </label>
-                                        
+                                    <form class='md-form' id='formfichier' method="POST" action='epreuves.php' enctype='multipart/form-data'>
+                                        <input type='file' hidden='hidden' id='fich' name='fich[]' multiple>
+                                            <label for='fich' id='bouton' style='padding-left: 4.9cm;'><img src='img\iplus.png'>
+
+                                        </label></br>
+                                        <span style='margin-left:2.7cm ;font-size:0.4cm;' id='fichier'></span></br></br>
+                                        <div>
+                                    <input type='text' class='form-control' placeholder='Donner un titre' name='titre' required>
+                                  </div>  
+                                  <div>
+                                    <p>Date Limite : </p>
+                                    <input type="datetime-local"  class='form-control' name='limite' required>
+                                  </div> 
+                                        <div  style='padding-left: 4.7cm;'>
+                                            <button type='submit' class='btn btn-outline-secondary'>Envoyer</button>
+                                        </div>
                                       </form>
-                                    </div>
-            
-                                <button type='button' class='btn btn-light btn-lg btn-block' data-toggle='collapse' href='#choix5'><h5 style='color: black;'><i class='fa fa-envelope' aria-hidden='true'></i>&nbsp;&nbsp;Contacter Le groupe</h5></button>
-            
-                                <div class='collapse' id='choix5'>
-                                   
-            
-                                    <form>
-                                        <div class='form-group'>
-                                          <label for='mail'>Message</label>
-                                        <textarea class='form-control form-control-sm' id='name' ></textarea>
-                                        </div>
-                                        <div  style='padding-left: 4.3cm;'>
-                                            <button type='boutton' class='btn btn-outline-success'>Envoyer</button>
-                                        </div>
-                                    </div>                  
-            
-                                
+                                    </div>                
                             </div>
                         </div>
                     </div></div>
-                <!-- ##### Blog Details Content ##### -->
-                    <div class='container-fluid'>
-                        <div class='row justify-content-center'>
-                            <div class='col-12 col-lg-8'>
+
                                 <!-- devoirs et cours -->
-                                <ul class='list-group list-group-flush'>
-                                    <li class='list-group-item'>Cras justo odio</li>
-                                    <li class='list-group-item'>Dapibus ac facilisis in</li>
-                                    <li class='list-group-item'>Morbi leo risus</li>
-                                    <li class='list-group-item'>Porta ac consectetur ac</li>
-                                    <li class='list-group-item'>Vestibulum at eros</li>
-                                  </ul>
-                            </div>
-                        </div>
-        
+                                <?php
+                                function format($date)
+                                {
+                                    $occ = strrpos($date,":");
+                                    $date_formate = substr($date,0,$occ) ;
+                                    return($date_formate);
+                                }
+                                    include('includes/connexion.php') ;
+                                     $reponse =$bd->query("SELECT * FROM cours ORDER BY date desc ");
+                                     while ($entree = $reponse->fetch()) 
+                                     {
+                                        echo"<div class='regular-page-area '>
+                                        <div class='container' style='padding-left:6.4cm;'>
+                                            <div class='row'>
+                                                <div class='col-9'>
+                                                    <div class='page-content'>
+                                                        <h6>".ucwords($_SESSION['nom'])."";
+                                                        if($entree['genre']==0) echo "a partagé un nouveau document : ".
+                                                             $entree['titre']."  </h6>
+                                                            <small class ='text-muted'>".format($entree['date'])."</small> <a href=".$entree['url']." 
+                                                            download><img style='padding-left:14cm;margin-top:-1.2cm'src='img/telechargement.png'/></a>";
+                                                        else echo "a lancé une nouvelle epreuve : ".
+                                                        $entree['titre']."  </h6>
+                                                       <small class ='text-muted'>".format($entree['date'])."  </small></br><small class ='text-muted'> Date Limite :".format($entree['limite'])."</small>
+                                                       <a href=".$entree['url']." 
+                                                        download><img style='padding-left:14cm;margin-top:-2.5cm'src='img/telechargement.png'/></a>";
+                                                        echo" </div>
+                                                                                                               
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> </br>" ;
+                                            
+                                   } 
+                                    ?>    
+                                       
         
                            <!-- ##### Footer Area Start ##### -->
             <footer class='footer-area'>
@@ -284,14 +253,16 @@
             <script src='js/plugins/plugins.js'></script>
             <!-- Active js -->
             <script src='js/active.js'></script>
+            <script >
+    document.getElementById('fich').addEventListener('change', function() {
+    document.getElementById("fichier").innerHTML =this.files.length+" fichier(s) prêt(s) à partager";
+});
+document.getElementById('fich1').addEventListener('change', function() {
+    document.getElementById('fichier1').innerHTML =this.files.length+" fichier(s) prêt(s) à partager";
+});
+</script>
+
             
         </body>
         
-        </html>" ;
-        fwrite($id_fichier,$chaine);
-        fclose($id_fichier) ;
-
-    }}
-
-
-?>
+        </html>

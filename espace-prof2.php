@@ -1,9 +1,11 @@
 <?php
-header('location:espace-prof1.php');
 //error_reporting(0);
-include('session.php') ;
-include('cours-bd.php') ;
-require('connexion.php'); ?> 
+header('location:espace.php');
+include('includes/session.php') ;
+include('includes/cours-bd.php') ;
+require('includes/connexion.php');
+if(statut()!=1) header('location:../formconnexion.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +28,9 @@ require('connexion.php'); ?>
 </head>
 
 <body>
-<!-- ##### Header Area Start ##### -->
-<header class="header-area">
+
+    <!-- ##### Header Area Start ##### -->
+  <header class="header-area">
         <!-- Navbar Area -->
         <div class="clever-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -56,7 +59,7 @@ require('connexion.php'); ?>
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
-    <li><a <?php if(statut()==1):?> href="espace-prof1.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
+    <li><a <?php if(statut()==1):?> href="espace.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
 
                             </ul>
 
@@ -70,7 +73,7 @@ require('connexion.php'); ?>
                                         <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte()) echo $_SESSION['nom'];?></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
                                             <a class="dropdown-item" href="profile.html">Profile</a>
-                                            <a type="submit" href="deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
+                                            <a type="submit" href="includes/deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
                 
                                         </div>
                                     </div>
@@ -84,7 +87,8 @@ require('connexion.php'); ?>
                         <!-- Nav End -->
                        </header> </br>
                        <!-- ##### Hero Area Start ##### -->
-    <section class="hero-area bg-img bg-overlay-2by5" style="background-image: url(img/divers/ens.jpg);">
+    <?php if(statut()==1): ?>
+    <section class="hero-area bg-img bg-overlay-2by5" style="background-color:#000080">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -96,15 +100,14 @@ require('connexion.php'); ?>
                     </div>
                     <div class="collapse multi-collapse" id="creation">
                         <div class="container" style="padding:0.5cm;">
-                            <form action="espace-prof2.php" method="POST">
+                            <form action="espace.php" method="POST">
                                 <div class="row">
                                   <div class="col">
                                     <input type="text" class="form-control" placeholder="Donner un titre pour la Matiére" name="matiere" required>
                                   </div>
                                 </div>
-                                <div style="margin-top: 0.2cm;padding-left: 10.5cm;">
-                                    <button type="submit" class="btn btn-warning btn-lg" aria-hidden="true"><b>Ajouter</b></button>
-
+                                <div style="margin-top: 0.2cm;padding-left: 12.8cm;">
+                                    <button type="submit" class="btn btn-warning btn-lg" aria-hidden="true" ><b>Ajouter</b></button>
 
                                 </div>
 
@@ -118,6 +121,24 @@ require('connexion.php'); ?>
        
     </section>
     <!-- ##### Hero Area End ##### -->
+    <?php elseif(statut()==2): ?>
+    <!-- ##### Hero Area Start ##### -->
+  <section class="hero-area bg-img bg-overlay-2by2" style="background-image:url(img/fond.png)">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <!-- Hero Content -->
+                    <div class="hero-content text-center">
+                        <h2 style="font-family:candara">Le Bon Enseignant Fait Le Bon Eleve</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </section>
+    <!-- ##### Hero Area End ##### -->
+    <?php endif; ?>
+
                        
     <!--espace prof-->
 
@@ -127,25 +148,10 @@ require('connexion.php'); ?>
         <div class="row">
             <!-- Single Blog Area -->
            <?php
-           ajout_matiere();
-           ecriture_fichier();
-           $reponse =$bd->query("SELECT nom FROM matiere WHERE prof= '" . $_SESSION['nom'] . "' ");
-             while ($entree = $reponse->fetch()) 
-            {
-                $matiere = $entree['nom'] ;
-                $redirection = $matiere.".php" ;
-                echo "<div class='col-12 col-lg-6'>
-                <div class='single-blog-area mb-100 wow fadeInUp' data-wow-delay='250ms'>
-                    <img style='width:1000px;height:300px'src='img\matiere.jpg' alt=''>
-                    <div class='blog-content'>
-                        <a href='".$redirection."' class='blog-headline'>
-                            <h3 style='margin-left:3.5cm;'>".ucwords($matiere)."</h3>
-                        </a>
-                    </div>
-                </div>
-            </div>";
-       
-            }
+           if(statut()==1)
+           include('includes/matiere.php');
+           if(statut()==2) include('includes/matiere-eleve.php');
+  
             ?> 
          
             </div>

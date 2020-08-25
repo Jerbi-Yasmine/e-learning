@@ -3,8 +3,9 @@
 include('includes/session.php') ;
 include('includes/cours-bd.php') ;
 require('includes/connexion.php');
-if(statut()!=1) header('location:../formconnexion.php') ?>
+require('includes/informations.php');
 
+if(statut()!=1) header('location:../formconnexion.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,12 +24,14 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+
 
 </head>
-
 <body>
+  
 
-    <!-- ##### Header Area Start ##### -->
+         <!-- ##### Header Area Start ##### -->
   <header class="header-area">
         <!-- Navbar Area -->
         <div class="clever-main-menu">
@@ -58,7 +61,7 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
-    <li><a <?php if(statut()==1):?> href="espace-prof1.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
+    <li><a <?php if(statut()==1):?> href="espace.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
 
                             </ul>
 
@@ -84,39 +87,33 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
 
                         </div>
                         <!-- Nav End -->
-                       </header> </br>
+                       </header> </br></br>
+        <!-- ##### Header Area End ##### -->
+  <div class="container1" >
+  <img src="img/utilisateur.png" class="user"/></br></br>
+  <h6 id='inf'>Informations</h6>
 
+          <table>
+            <tr class="row1">
+              <td class="t">Compte</td>
+              <td class="b"><?php echo compte()?></td>
 
+            </tr>
+            <tr>
+              <td class="t">Adresse E-mail</td>
+              <td class="b"><?php echo $_SESSION['utilisateur']?></td>
 
-  <!-- ##### Hero Area Start ##### -->
-  <section class="hero-area bg-img bg-overlay-2by2" style="background-image:url(img/fond.png)">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <!-- Hero Content -->
-                    <div class="hero-content text-center">
-                        <h2 style="font-family:candara">Le Bon Enseignant Fait Le Bon Eleve</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-    </section>
-    <!-- ##### Hero Area End ##### -->
+            </tr ><tr class="row1">
+              <td class="t">Nom d'Utilisateur</td>
+              <td class="b"><?php echo ucfirst($_SESSION['nom']) ?></td>
 
+            </tr>
+          </table>
+      </div>
+</br></br></br>
 
-
-
-
-
-
-
-
-
-
-
-                        <!-- ##### Footer Area Start ##### -->
-  <footer class="footer-area">
+ <!-- ##### Footer Area Start ##### -->
+ <footer class="footer-area">
     <!-- Top Footer Area -->
     <div class="top-footer-area">
         <div class="container">
@@ -130,12 +127,11 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
             </div>
         </div>
     </div>
-</footer>
+</footer><!-- ##### Footer Area Start ##### -->
 
-</div>
-    <!-- ##### Footer Area End ##### -->
 
-    <!-- ##### All Javascript Script ##### -->
+
+ <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
@@ -149,3 +145,6 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
 </body>
 
 </html>
+
+
+

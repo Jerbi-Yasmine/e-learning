@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
-<<<<<<< HEAD
--- Généré le :  mer. 19 août 2020 à 13:31
-=======
--- Généré le :  mar. 18 août 2020 à 13:38
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
+-- Généré le :  mar. 25 août 2020 à 20:19
 -- Version du serveur :  10.1.36-MariaDB
 -- Version de PHP :  7.2.11
 
@@ -35,10 +31,45 @@ SET time_zone = "+00:00";
 CREATE TABLE `cours` (
   `id` int(15) NOT NULL,
   `matiere` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `acces` int(2) NOT NULL,
+  `prof` varchar(30) NOT NULL,
+  `titre` varchar(50) NOT NULL,
   `nom` varchar(30) NOT NULL,
-  `url` varchar(250) NOT NULL
+  `url` varchar(250) NOT NULL,
+  `date` datetime(6) NOT NULL,
+  `limite` datetime(6) NOT NULL,
+  `genre` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `cours`
+--
+
+INSERT INTO `cours` (`id`, `matiere`, `prof`, `titre`, `nom`, `url`, `date`, `limite`, `genre`) VALUES
+(175, 'francais', 'amel', 'lkjhg', 'cours -art.html', 'cp/cours -art.html', '2020-08-24 18:10:00.000000', '0000-00-00 00:00:00.000000', 0),
+(176, 'francais', 'amel', '^pkjhg', 'cours -art.html', 'cp/cours -art.html', '2020-08-24 18:12:00.000000', '0000-00-00 00:00:00.000000', 0),
+(177, 'francais', 'amel', '^pkjhg', 'cours -art.html', 'cp/cours -art.html', '2020-08-24 18:13:00.000000', '0000-00-00 00:00:00.000000', 0),
+(178, 'eee', 'amel', 'lkjhg', 'contact.html', 'cp/contact.html', '2020-08-24 23:01:00.000000', '0000-00-00 00:00:00.000000', 0),
+(179, 'eee', 'amel', 'bo,ngikfk', 'blog.html', 'ep/blog.html', '2020-08-24 23:02:00.000000', '2020-08-22 20:20:00.000000', 1),
+(180, 'eee', 'amel', 'lkjhg', 'cours -art.html', 'cp/cours -art.html', '2020-08-24 23:04:00.000000', '0000-00-00 00:00:00.000000', 0),
+(181, 'd', 'amel', 'mlkjh', 'cours - phy.html', 'cp/cours - phy.html', '2020-08-25 01:24:00.000000', '0000-00-00 00:00:00.000000', 0),
+(182, 'd', 'amel', 'mlkjh', 'cours - programmation.html', 'cp/cours - programmation.html', '2020-08-25 01:24:00.000000', '0000-00-00 00:00:00.000000', 0),
+(183, 'd', 'amel', 'mlkjh', 'cours -art.html', 'cp/cours -art.html', '2020-08-25 01:24:00.000000', '0000-00-00 00:00:00.000000', 0),
+(184, 'last', 'amel', 'mlk', 'acceuil.php', 'cp/acceuil.php', '2020-08-25 02:02:00.000000', '0000-00-00 00:00:00.000000', 0),
+(185, 'architecture', 'amel', 'lkjhg', 'aaaamel.php', 'cp/aaaamel.php', '2020-08-25 15:40:00.000000', '0000-00-00 00:00:00.000000', 0),
+(186, 'architecture', 'amel', 'lkjhg', 'acceuil.php', 'cp/acceuil.php', '2020-08-25 15:40:00.000000', '0000-00-00 00:00:00.000000', 0),
+(187, 'architecture', 'amel', 'lkjhg', 'administrateur.php', 'cp/administrateur.php', '2020-08-25 15:40:00.000000', '0000-00-00 00:00:00.000000', 0),
+(189, 'anglais7', 'amel', 'mlk', 'cours -art.html', 'cp/cours -art.html', '2020-08-25 16:19:00.000000', '0000-00-00 00:00:00.000000', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fields`
+--
+
+CREATE TABLE `fields` (
+  `id` int(30) NOT NULL,
+  `categorie` varchar(50) NOT NULL,
+  `matiere` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -51,12 +82,8 @@ CREATE TABLE `invitation` (
   `id` int(3) NOT NULL,
   `etudiant` varchar(50) NOT NULL,
   `matiere` varchar(50) NOT NULL,
-<<<<<<< HEAD
   `prof` varchar(50) NOT NULL,
   `acces` int(2) NOT NULL DEFAULT '0'
-=======
-  `prof` varchar(50) NOT NULL
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -77,15 +104,7 @@ CREATE TABLE `matiere` (
 --
 
 INSERT INTO `matiere` (`id`, `nom`, `prof`, `acces`) VALUES
-<<<<<<< HEAD
-(188, 'eee', 'yasmina', ''),
-(189, 'eee', 'yasmina', ''),
-(190, 'oriente objet', 'yasmina', ''),
-(191, 'oriente objet', 'yasmina', ''),
-(192, 'lkjh', 'yasmina', '');
-=======
-(147, 'oriente objet', 'jerbi', '');
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
+(28, 'francais', 'amel', '0');
 
 -- --------------------------------------------------------
 
@@ -96,31 +115,16 @@ INSERT INTO `matiere` (`id`, `nom`, `prof`, `acces`) VALUES
 CREATE TABLE `personne` (
   `id` int(15) NOT NULL,
   `email` varchar(50) NOT NULL,
-<<<<<<< HEAD
   `mdp` varchar(300) NOT NULL,
   `nom` varchar(30) NOT NULL,
   `statut` int(2) NOT NULL
-=======
-  `mdp` varchar(30) NOT NULL,
-  `nom` varchar(30) NOT NULL,
-  `statut` int(2) NOT NULL,
-  `matiere` varchar(3000) NOT NULL
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `personne`
 --
 
-<<<<<<< HEAD
 INSERT INTO `personne` (`id`, `email`, `mdp`, `nom`, `statut`) VALUES
-(1, 'yasmine.jerbi@ensi-uma.tn', '1234567', 'yasmine', 2),
-(2, 'firas@gmail.com', '14', 'firas', 2),
-(3, 'tarak3072@yahoo.fr', '11', 'jerbi', 1),
-(4, 'ytre@ihlg.g', 'a', 'ddddddd', 2),
-(5, 'yt@gmail.yn', '147852369', 'hhh', 2),
-(6, 'imed@gmail.com', '1245789663', 'imed', 1),
-(7, 'amina@gmail.com', '14523698', 'amina', 2),
 (8, 'amir@yahoo.fr', '145236987', 'amir', 2),
 (9, 'dlkcl@krf.gg', '145236987', 'dddddddlkij', 1),
 (10, 'dlkcl@krf.ggt', 'mpoiuyt5555', 'hjk', 1),
@@ -140,25 +144,24 @@ INSERT INTO `personne` (`id`, `email`, `mdp`, `nom`, `statut`) VALUES
 (24, 'cc@uuu.yy', '$2y$10$vgszdzexURKtwVCgZNCXyelK7GWKOH7VVTYNaTRMb80jXiSX/gtkO', 'cc', 2),
 (25, 'ss@lh.gg', '$2y$10$Lg/iQaNUWsCSTKTyHjRw7OBWL/m6lBzfN2jugedP.2LYnQLFNvI1K', 'sx', 2),
 (26, 'yasmine@gmail.com', '$2y$10$74u74LDiqVB6xq0PYiZQH.ThYaMRYilS6YiZqgSHWCezanQIvRcHC', 'yasmina', 1),
-(27, 'yasmine1@gmail.com', '$2y$10$6C6LCQ7fZcCF9gBr2eVutuHsWQB1sXoXdVDsKEZDmav.YgcMFjk9u', 'yasmina2', 1);
-=======
-INSERT INTO `personne` (`id`, `email`, `mdp`, `nom`, `statut`, `matiere`) VALUES
-(1, 'yasmine.jerbi@ensi-uma.tn', '1234567', 'yasmine', 2, ''),
-(2, 'firas@gmail.com', '14', 'firas', 2, ''),
-(3, 'tarak3072@yahoo.fr', '11', 'jerbi', 1, ''),
-(4, 'ytre@ihlg.g', 'a', 'ddddddd', 2, ''),
-(5, 'yt@gmail.yn', '147852369', 'hhh', 2, ''),
-(6, 'imed@gmail.com', '1245789663', 'imed', 1, 'oriente objet'),
-(7, 'amina@gmail.com', '14523698', 'amina', 2, ''),
-(8, 'amir@yahoo.fr', '145236987', 'amir', 2, ''),
-(9, 'dlkcl@krf.gg', '145236987', 'dddddddlkij', 1, ''),
-(10, 'dlkcl@krf.ggt', 'mpoiuyt5555', 'hjk', 1, ''),
-(11, 'a@gmail.com', '145236987', 'aaa', 2, ''),
-(12, 'offfffffflh@llh.hg', '14523698785', 'b', 1, ''),
-(13, 'amina@gmail.comk', '785412369', 'aaalkj', 1, ''),
-(14, 'dd@kfkf.ffd', '145236987', 'e', 2, ''),
-(15, 'gg@jj.hh', '147852369', 'gg', 1, '');
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
+(27, 'yasmine1@gmail.com', '$2y$10$6C6LCQ7fZcCF9gBr2eVutuHsWQB1sXoXdVDsKEZDmav.YgcMFjk9u', 'yasmina2', 1),
+(28, 'amel@hjyy.tt', '$2y$10$oajQteJy3E3CD/2fHWH/LeKktH4brFpPougcJeWysMU8qUgJwBvSq', 'amel', 1),
+(29, 'ameni.jer.@j.td', '$2y$10$60lYEg0YFuQkns8RC.H2L.LZJnr2PBU3uEjJnlKuMPwhzBiOMFitG', 'ameni', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `public`
+--
+
+CREATE TABLE `public` (
+  `id` int(15) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `url` varchar(90) NOT NULL,
+  `prof` varchar(50) NOT NULL,
+  `commentaire` varchar(500) NOT NULL,
+  `acces` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Index pour les tables déchargées
@@ -168,6 +171,12 @@ INSERT INTO `personne` (`id`, `email`, `mdp`, `nom`, `statut`, `matiere`) VALUES
 -- Index pour la table `cours`
 --
 ALTER TABLE `cours`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `fields`
+--
+ALTER TABLE `fields`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -189,6 +198,12 @@ ALTER TABLE `personne`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `public`
+--
+ALTER TABLE `public`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -196,7 +211,13 @@ ALTER TABLE `personne`
 -- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+
+--
+-- AUTO_INCREMENT pour la table `fields`
+--
+ALTER TABLE `fields`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `invitation`
@@ -208,21 +229,19 @@ ALTER TABLE `invitation`
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-<<<<<<< HEAD
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
-=======
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT pour la table `personne`
 --
 ALTER TABLE `personne`
-<<<<<<< HEAD
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-=======
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
->>>>>>> 88e37dc539d8ef7f1c0b44dd9bcb144c4fd924ce
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT pour la table `public`
+--
+ALTER TABLE `public`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

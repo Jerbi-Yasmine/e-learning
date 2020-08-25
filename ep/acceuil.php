@@ -130,7 +130,7 @@ include('includes/session.php');
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
-    <li><a <?php if(statut()!=0):?>href="espace.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
+    <li><a <?php if(statut()==1):?> href="espace-prof1.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
 
                             </ul>
 
@@ -144,7 +144,7 @@ include('includes/session.php');
                                         <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte()) echo $_SESSION['nom'];?></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
                                             <a class="dropdown-item" href="profile.html">Profile</a>
-                                            <a type="submit" href="includes/deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
+                                            <a type="submit" href="deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
                 
                                         </div>
                                     </div>
@@ -217,7 +217,7 @@ include('includes/session.php');
         </div>
     </section>
     <!-- ##### Cool Facts Area End ##### -->
-        <?php if ((statut()!=0)): ?>
+        <?php if (statut()!=0): ?>
     <!-- ##### Register Now Start ##### -->
     <section class="register-now section-padding-100-0 d-flex justify-content-between align-items-center" style="background-image: url(img/core-img/texture.png);">
         <!-- Register Contact Form -->
@@ -231,7 +231,7 @@ include('includes/session.php');
                                 <div class="row">
                                     <div class="col-12 col-lg-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="text" name="prof" placeholder="<?php echo ucfirst($_SESSION['nom'])?>" readonly>
+                                            <input type="text" class="form-control" id="text" name="prof" placeholder="Nom d'Utilisateur" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-12">
@@ -292,8 +292,7 @@ include('includes/session.php');
 });
         </script>
     
-    
-
+     
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->

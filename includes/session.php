@@ -1,5 +1,6 @@
 <?php  
 session_start() ;
+
 function authentification()
 {
     include('connexion.php');
@@ -28,6 +29,7 @@ function authentification()
                 //redirection vers l'espace utilisateur
                 session_start() ;
                 $_SESSION['utilisateur'] = $_POST['email'];
+                chdir("../");
                 header("location:acceuil.php");
     
         }
@@ -45,6 +47,7 @@ function est_connecte()
 function statut()
 {
     require('connexion.php') ;
+    if(est_connecte()){
     $utilisateur =$_SESSION['utilisateur'] ;
     $reponse =$bd->query("SELECT * FROM personne WHERE email= '" . $utilisateur . "' ");
     while ($entree = $reponse->fetch()) 
@@ -52,13 +55,12 @@ function statut()
         $_SESSION['nom']=$entree['nom'] ;
         $_SESSION['statut'] =$entree['statut'] ;
     }
-echo $_SESSION['nom'];
 if($_SESSION['statut']==0)
   return 0 ;
   if($_SESSION['statut']==1)
   return 1 ;
   if($_SESSION['statut']==2)
-  return 2 ;
+  return 2 ;}
 }
     
 ?>

@@ -2,5 +2,5 @@
 session_start() ;
 session_unset();
 session_destroy();
-header('location:acceuil.php') ;
+header('location:../acceuil.php') ;
 ?>

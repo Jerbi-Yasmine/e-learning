@@ -107,7 +107,7 @@ include('includes/session.php');
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
-                                <li><a  <?php if(statut()!=0):?> href="espace.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
+                                <li><a  <?php if(statut()==1):?> href="espace-prof1.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
 
                             </ul>
 

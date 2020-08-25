@@ -1,7 +1,7 @@
 <?php
 function inscription()
 {
-    require('connexion.php') ;
+    require('includes/connexion.php') ;
     if(isset($_POST['email']) && isset($_POST['mdp']) &&  $_POST['nom'] && isset($_POST['statut']))
 {
         if(isset ($_POST['mdp']) && strlen($_POST['mdp'])<8)

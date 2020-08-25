@@ -2,8 +2,9 @@
 //error_reporting(0);
 include('includes/session.php') ;
 include('includes/cours-bd.php') ;
-require('includes/connexion.php');
-if(statut()!=1) header('location:../formconnexion.php') ?>
+require('includes/connexion.php'); 
+//if(!est_connecte() || (statut()!=0)) header('location:formconnexion.php') ;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,10 +70,10 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
                             <div class="login-state d-flex align-items-center">
                                 <div class="user-name mr-30">
                                     <div class="dropdown">
-                                        <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte()) echo $_SESSION['nom'];?></a>
+                                        <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte() && statut()!=0) echo $_SESSION['nom']; else echo "Administrateur";?></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
                                             <a class="dropdown-item" href="profile.html">Profile</a>
-                                            <a type="submit" href="includes/deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
+                                            <a type="submit" href="deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
                 
                                         </div>
                                     </div>
@@ -80,72 +81,13 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
                                 <div class="userthumb">
                                     <img src="img\divers\profile.jpg" alt="">
                                 </div>
+                                
                             </div>
 
                         </div>
                         <!-- Nav End -->
                        </header> </br>
-
-
-
-  <!-- ##### Hero Area Start ##### -->
-  <section class="hero-area bg-img bg-overlay-2by2" style="background-image:url(img/fond.png)">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <!-- Hero Content -->
-                    <div class="hero-content text-center">
-                        <h2 style="font-family:candara">Le Bon Enseignant Fait Le Bon Eleve</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-    </section>
-    <!-- ##### Hero Area End ##### -->
-
-
-
-
-
-
-
-
-
-
-
-
-                        <!-- ##### Footer Area Start ##### -->
-  <footer class="footer-area">
-    <!-- Top Footer Area -->
-    <div class="top-footer-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Footer Logo -->
-                    <div class="footer-logo">
-                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-
-</div>
-    <!-- ##### Footer Area End ##### -->
-
-    <!-- ##### All Javascript Script ##### -->
-    <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="js/active.js"></script>
-</body>
-
-</html>
+                       <?php
+                                    include('includes/supprimer.php');
+                                    
+                                    ?>
