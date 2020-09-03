@@ -73,7 +73,7 @@ function url_rendu($id)
                                         </label></br>
                                     <div class='col-12 '>
                                         <input type='hidden' value='".$entree['id']."' name='ep'/>
-                                        <input type='text' value='".$i."' name='rec'/>
+                                        <input type='hidden' value='".$i."' name='rec'/>
                                         <button type='submit' class='btn btn-sm btn-outline-secondary btn-block ' name='submit$i'>Envoyer</button>
                                     </div>
                                 </div></div>
