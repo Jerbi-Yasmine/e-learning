@@ -9,17 +9,6 @@ function authentification()
    {
         $util =$_POST['email'] ;
         $reponse =$bd->query("SELECT mdp FROM personne WHERE email= '" . $util . "' ");
-       /*$requete = $bd -> prepare('SELECT * FROM personne where email=:email AND mdp=:mdp') ;
-       $requete->execute(array('email'=>$_POST['email'],'mdp'=>$_POST['mdp'])) ;
-       if(($requete->rowCount())!=0)
-       {
-   
-               //redirection vers l'espace utilisateur
-               session_start() ;
-               $_SESSION['utilisateur'] = $_POST['email'];
-               header("location:acceuil.php");
-   
-       }*/
        $entree = $reponse->fetch() ;
 
        $pass = $_POST['mdp'] ;     $hpass= $entree['mdp'];
@@ -27,6 +16,7 @@ function authentification()
         {
     
                 //redirection vers l'espace utilisateur
+                session_set_cookie_params(1209600);
                 session_start() ;
                 $_SESSION['utilisateur'] = $_POST['email'];
                 chdir("../");
@@ -38,12 +28,12 @@ function authentification()
            }
 
 }}
-authentification();
 function est_connecte()
 {
     if(isset($_SESSION['utilisateur']))
     return true ;
 }
+
 function statut()
 {
     require('connexion.php') ;
@@ -61,6 +51,5 @@ if($_SESSION['statut']==0)
   return 1 ;
   if($_SESSION['statut']==2)
   return 2 ;}
-}
-    
+}   
 ?>

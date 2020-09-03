@@ -1,9 +1,10 @@
 <?php
-//error_reporting(0);
 include('includes/session.php') ;
 include('includes/cours-bd.php') ;
-require('includes/connexion.php');
-if(statut()==0 || !est_connecte()) header('location:acceuil.php') ?>
+require('includes/connexion.php'); 
+include('includes/utile.php');
+if(!est_connecte() || (statut()!=0)) header('location:acceuil.php') ;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +28,15 @@ if(statut()==0 || !est_connecte()) header('location:acceuil.php') ?>
     <link rel="stylesheet" href="style2.css">
 
 
-
 </head>
 
 <body>
+    <!-- Preloader  -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+    <!-- Preloader End -->
+
     <!-- ##### Header Area Start ##### -->
   <header class="header-area">
         <!-- Navbar Area -->
@@ -60,19 +66,17 @@ if(statut()==0 || !est_connecte()) header('location:acceuil.php') ?>
                          <div id="a" class="classynav">
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
-                                <li><a href="cours.php">Cours en ligne</a></li>
-                                <li><a <?php if(statut()==1):?> href="#" <?php elseif (statut()==2): ?>href="#" <?php else: ?> href="notification.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
+                                <li><a href="cours.php">Cours en Ligne</a></li>
+                                <li><a href="notification.php">Mon Espace</a></li>
+                                <li><a <?php  if(notification()==0):?> href="#"<?php else: ?> href="notification.php" <?php endif; ?> ><i class="fa fa-bell"><?php if(notification()!=0) echo "<sup class='badge badge-danger'>".notification()."</sup>"; ?></i>&nbsp;&nbsp;</a></li>
 
                             </ul>
-
-
-                            <!-- Register / Login -->
 
                             <!-- Register / Login -->
                             <div class="login-state d-flex align-items-center">
                                 <div class="user-name mr-30">
                                     <div class="dropdown">
-                                        <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte()) echo $_SESSION['nom'];?></a>
+                                        <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte() && statut()!=0) echo $_SESSION['nom']; else echo "Administrateur";?></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
                                             <a class="dropdown-item" href="profile.php">Profile</a>
                                             <a type="submit" href="includes/deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
@@ -83,78 +87,23 @@ if(statut()==0 || !est_connecte()) header('location:acceuil.php') ?>
                                 <div class="userthumb">
                                     <img src="img\divers\profile.jpg" alt="">
                                 </div>
+                                
                             </div>
 
                         </div>
                         <!-- Nav End -->
-                       </header> </br>
-                       <!-- ##### Hero Area Start ##### -->
-    <?php if(statut()==1): ?>
-    <section class="hero-area bg-img bg-overlay-2by5 espace" style="background-color:#000080">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <!-- Hero Content -->
-                    <div class="hero-content text-center">
-                        <h2 class='titre'>Le Bon Enseignant Fait Le Bon Eleve</h2>
-                        <button  class="btn clever-btn " data-toggle="collapse" href="#creation" >Créer un Groupe</button>
+                                        </header></br>
+                        <?php
+                        include('includes/choix.php');
+                        ?>  
 
-                    </div>
-                    <div class="collapse  mx-auto cours2" id="creation">
-                            <form action="redirection/redirection-espace.php" method="POST">
-                                    <input type="text" class="form-control" placeholder="Donner un titre pour la Matiére" name="matiere" required>
-                                    <button type="submit" class="btn btn-warning btn-lg button" aria-hidden="true" ><b>Ajouter</b></button>
-                              </form>
-                        
-                        </div>
-                </div>
-            </div>
-        </div>
-       
-    </section>
-    <!-- ##### Hero Area End ##### -->
-    <?php elseif(statut()==2): ?>
-    <!-- ##### Hero Area Start ##### -->
-  <section class="hero-area bg-img bg-overlay-2by2" style="background-image:url(img/fond.png)">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <!-- Hero Content -->
-                    <div class="hero-content text-center">
-                        <h2 style="font-family:candara">Mes Cours</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-    </section>
-    <!-- ##### Hero Area End ##### -->
-    <?php endif; ?>
-
-              
-    <!--espace prof-->
+    </div>
+  </div>
 
 
-    <section class="blog-area blog-page section-padding-100" >
 
-        <div class="row">
-            <!-- Single Blog Area -->
-           <?php
-           if(statut()==1)
-           include('includes/matiere.php');
-           if(statut()==2) include('includes/matiere-eleve.php');
-  
-            ?> 
-         
-            </div>
-
-
-        
-        
-                
-</section>
-  <!-- ##### Footer Area Start ##### -->
-  <footer class="footer-area">
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area" style="margin-top:10cm">
     <!-- Top Footer Area -->
     <div class="top-footer-area">
         <div class="container">
@@ -184,6 +133,3 @@ if(statut()==0 || !est_connecte()) header('location:acceuil.php') ?>
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
-</body>
-
-</html>

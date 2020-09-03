@@ -1,10 +1,13 @@
         <?php include('includes/session.php') ; include('includes/connexion.php') ;
+        if(statut()==0 || !est_connecte()) header('location:acceuil.php');
         $id = $_GET['id'];
         $reponse =$bd->query("SELECT * FROM matiere WHERE id= '" . $id . "' ");
         $entree = $reponse->fetch() ;
         $matiere = $entree['nom'];
          error_reporting(0);
           $_SESSION['matiere']=$matiere;
+          if(statut()==2) $_SESSION['ens']=$entree['prof'];
+
         ?>
         <!DOCTYPE html>
                 <html lang='en'>
@@ -17,18 +20,25 @@
                     <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
                 
                     <!-- Title -->
-                    <title>Glory</title>
+                    <title>Achieve</title>
                 
                     <!-- Favicon -->
-                    <link rel='icon' href='img/Logo.jpg'>
+                    <link rel='icon' href='img/logoo.png'>
                 
                     <!-- Stylesheet -->
                     <link rel='stylesheet' href='style.css'>
+                    <link rel='stylesheet' href='style1.css'>
+                    <link rel='stylesheet' href='style2.css'>
+
                 
                 </head>
                 
                 <body>
-                
+                 <!-- Preloader  --> 
+                <div id="preloader">
+                    <div class="spinner"></div>
+                </div>
+
                     <!-- ##### Header Area Start ##### -->
                     <header class='header-area'>
                         <!-- Navbar Area -->
@@ -38,7 +48,7 @@
                                 <nav class='classy-navbar justify-content-between' id='cleverNav'>
                 
                                     <!-- Logo -->
-                                    <a class='nav-brand' href='acceuil.php'><img src='img/logoo.jpg' alt=''></a>
+                                    <a class='nav-brand' href='acceuil.php'><img src='img/logo.png' alt=''></a>
                 
                                     <!-- Navbar Toggler -->
                                     <div class='classy-navbar-toggler'>
@@ -59,7 +69,7 @@
                                             <ul>
                                                 <li ><a href='acceuil.php'>Acceuil</a></li>
                                                 <li><a href='cours.php'>Cours en ligne</a></li>
-                                                <li><a href='espace-prof1.php'>Mon Espace</a></li>
+                                                <li><a href='espace.php'>Mon Espace&nbsp;&nbsp;</a></li>
                                             </ul>
                 
                 
@@ -69,9 +79,8 @@
                                             <div class='login-state d-flex align-items-center'>
                                                 <div class='user-name mr-30'>
                                                     <div class='dropdown'>
-                                                        <a class='dropdown-toggle' href='#' role='button'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><?php if (est_connecte()) echo 'amel';?></a>
+                                                        <a class='dropdown-toggle' href='#' role='button'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><?php if (est_connecte()) echo $_SESSION['nom'];?></a>
                                                         <div class='dropdown-menu dropdown-menu-right' aria-labelledby='userName'>
-                                                            <a class='dropdown-item' href='espace.php'>Mes groupes</a>
                                                             <a class='dropdown-item' href='profile.php'>Profile</a>
                                                             <a class='dropdown-item' href='includes/deconnexion.php'>Déconnexion</a>
                 
@@ -85,7 +94,7 @@
                 
                                         </div>
                                         <!-- Nav End -->
-                                       </header> </br>
+                                       </header>
                                        <!-- ##### Breadcumb Area Start ##### -->
                     <div class='breadcumb-area'>
                 
@@ -93,21 +102,22 @@
                         <div class='clever-catagory blog-details bg-img d-flex align-items-center justify-content-center p-3 height-400' style='background-color:#CF3868;'>
                             <div class='blog-details-headline'>
                                 <h3><?php echo $matiere ; ?></h3>
-                                <a   data-toggle='collapse' href='#supp'><img style='margin-left:4cm' src='img/reg.png'/></a>
-                                <div class='collapse' id='supp'>
+                                <?php
+                                    include('includes/acces.php');
+                                    if ((!a_acces()) && (statut()==2)) 
+                                    echo " <form action='includes/ajout-eleve.php' method='POST'><div class='mx-auto'><button type='submit' class='btn btn-outline-secondary  ' name='acces'>Accéder au Cours</button></div></form>";
 
-                                <form  method='POST' action='includes/supp-mat.php'>
-                                <button type='submit' style='margin-left:2.5cm' class='btn btn-secondary btn-sm' name='supp'><small>Supprimer Le Groupe</small></button>
-                                </br>
-                                <small class='text-muted' style='margin-left:1.6cm'>La suppression du groupe est définitive</small>
-
-                                </form></div>
+                            ?>
+                                <?php if(statut()==1):?>
+                                <div class='mx-auto'><a href="includes/supp-mat.php" style="margin-left: 26%;" class='btn btn-secondary btn-sm ' name='supp'><small>Supprimer Le Groupe</small></a></div>
+                                <div class='text-center'><small class='text-muted' >La suppression du groupe est définitive</small></div>
+                                <?php endif; ?>
                             </div>
 
                             
                         </div>
                         <!-- ##### Catagory Area End ##### -->
-                    
+                        <?php if(statut()==1): ?>
                         <div class='container'>
                             <div class='row justify-content-center'>
                                 <!-- Post A Comment -->
@@ -117,7 +127,7 @@
                                         <div class='collapse' id='choix1'>
                                                 <div class='form-group'>
                                                 Lien du cours :
-                                                <input type='text' class='form-control form-control-sm' value='rytutu'>  </div>
+                                                <input type='text' class='form-control form-control-sm' value='<?php echo "http://".$_SERVER['HTTP_HOST']."".$_SERVER['REQUEST_URI']?>'>  </div>
                                             </div>
                     
                                         
@@ -127,26 +137,28 @@
                                         <div class='collapse' id='choix2'>
                                             <form class='md-form' id='formfichier' method='POST' action='includes/documents.php' enctype='multipart/form-data'>
                                                 <input type='file' hidden='hidden' id='fich1' name='fich1[]' multiple>
-                                                    <label for='fich1' id='bouton' style='margin-top: 0.3cm;padding-left: 4.9cm;'><img src='img/iplus.png'>
+                                                    <label for='fich1' class="bouton"><img src='img/download.png'>
         
-                                                </label></br>
-                                                <span style='margin-left:4cm ;font-size:0.4cm;' id='fichier1'></span></br></br>
+                                                </label>
+                                                <div class='text-center'>
+                                                <span  id='fichier1'></span></br></br></div>
                                                 <div>
                                             <input type='text' class='form-control' placeholder='Donner un titre' name='titre1' required>
                                           </div>                                  
                                           <input class='form-control' type='text' name ='matiere' value ='<?php echo $matiere?>' placeholder='<?php echo $matiere?>' readonly>
             
-                                          <div  style='padding-left: 4.7cm;'>
-                                                    <button  type='submit' class='btn btn-outline-secondary'>Envoyer</button>
-                                                </div></br>
+                                          <div  class="bouton">
+                                                    <button  type='submit' class='btn btn-outline-secondary btn-sm'>Envoyer</button>
+                                                </div>
                                               </form>
                                             </div>
                     
-                                        <button type='button' class='btn btn-light btn-lg btn-block' data-toggle='collapse' href='#choix3'><h5 style='color: black;'><i class='fa fa-video-camera' aria-hidden='true'></i>&nbsp;&nbsp; Demarrer une visioconférence</h5></button>
+                                        <button type='button' class='btn btn-light btn-lg btn-block' data-toggle='collapse' href='#choix3'><h5 style='color: black;'><i class='fa fa-users ' aria-hidden='true'></i>&nbsp;&nbsp; Adhérents</h5></button>
                     
                                         <div class='collapse' id='choix3'>
-                                           
-                    
+                                                        <?php
+                                                         include('includes/adherent.php');
+                                                         ?>
                                             
                                             </div>
                     
@@ -156,10 +168,12 @@
                                         <div class='collapse' id='choix4'>
                                             <form class='md-form' id='formfichier' method='POST' action='includes/epreuves.php' enctype='multipart/form-data'>
                                                 <input type='file' hidden='hidden' id='fich' name='fich[]' multiple>
-                                                    <label for='fich' id='bouton' style='padding-left: 4.9cm;'><img src='img/iplus.png'>
+                                                    <label for='fich' class="bouton"><img src='img/download.png'>
         
-                                                </label></br>
-                                                <span style='margin-left:2.7cm ;font-size:0.4cm;' id='fichier'></span></br></br>
+                                                </label>
+                                                <div class='text-center'>
+                                                <span  id='fichier'></span></br></br></div>
+                                                <div>
                                                 <div>
                                             <input type='text' class='form-control' placeholder='Donner un titre' name='titre' required>
                                           </div> 
@@ -169,20 +183,20 @@
                                             <p>Date Limite : </p>
                                             <input type='datetime-local'  class='form-control' name='limite' required>
                                           </div> 
-                                                <div  style='padding-left: 4.7cm;'>
-                                                <button type='submit' class='btn btn-outline-secondary'>Envoyer</button>
+                                                <div  class="bouton">
+                                                <button type='submit' class='btn btn-outline-secondary btn-sm'>Envoyer</button>
                                                 </div></form>
                                             </div>                
                                     </div>
-                                </div></div></div></div>
-                                        <!-- devoirs et cours -->
-                                        <?php
-                                        include('includes/cours-prive.php');
-                                            ?>      
-                                       </div> 
+                                </div></div></div><?php endif;?>
+                            </div></br>
+                                <?php
+                                       if(statut()==1) include('includes/cours-prive.php');
+                                     ?>            
+                                       <?php if((statut()==2) && (a_acces()))  include('includes/cours-prive-eleve.php');?>
             
                                <!-- ##### Footer Area Start ##### -->
-                <footer class='footer-area'>
+                <footer class='footer-area' style='margin-top:8cm'>
                     <!-- Top Footer Area -->
                     <div class='top-footer-area'>
                         <div class='container'>
@@ -190,30 +204,13 @@
                                 <div class='col-12'>
                                     <!-- Footer Logo -->
                                     <div class='footer-logo'>
-                                        <a href='acceuil.php'><p style='font-size: xx-large;font-weight: bolder;'>Glory</p></a>
+                                        <a href='acceuil.php'><p style='font-size: xx-large;font-weight: bolder;'>Achieve</p></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </footer>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
                                     <!-- ##### Footer Area End ##### -->
             
                 <!-- ##### All Javascript Script ##### -->
@@ -228,13 +225,13 @@
                 <!-- Active js -->
                 <script src='js/active.js'></script>
                 <script >
-        document.getElementById('fich').addEventListener('change', function() {
-        document.getElementById('fichier').innerHTML =this.files.length+' fichier(s) prêt(s) à partager';
-        });
-        document.getElementById('fich1').addEventListener('change', function() {
-        document.getElementById('fichier1').innerHTML =this.files.length+' fichier(s) prêt(s) à partager';
-        });
-        </script>
+                document.getElementById('fich').addEventListener('change', function() {
+                document.getElementById('fichier').innerHTML =this.files.length+' fichier(s) prêt(s) à partager';
+                });
+                document.getElementById('fich1').addEventListener('change', function() {
+                document.getElementById('fichier1').innerHTML =this.files.length+' fichier(s) prêt(s) à partager';
+                });
+                </script>
         
                 
             </body>

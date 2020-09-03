@@ -1,8 +1,12 @@
-<?php
-include('includes/session.php');
-require('includes/utile.php');
-
-?>
+<?php include('includes/session.php') ; include('includes/connexion.php') ;include('includes/utile.php');
+        $id = $_GET['id'];
+        $reponse =$bd->query("SELECT * FROM domaine WHERE id= '" . $id . "' ");
+        $entree = $reponse->fetch() ;
+        $categorie = $entree['nom'];
+         error_reporting(0);
+          $_SESSION['categorie']=$categorie;
+          $_SESSION['imgcat']=$entree['url'];
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,13 +32,13 @@ require('includes/utile.php');
 
 <body>
     <!-- Preloader -->
+
     <div id="preloader">
         <div class="spinner"></div>
     </div>
-    
     <!--fin Prloader -->
    
-<?php if ((!est_connecte())):?>
+        <?php if ((!est_connecte())):?>
         <!-- Navbar Area -->
         <div class="clever-main-menu">
                 <div class="classy-nav-container breakpoint-off">
@@ -61,7 +65,7 @@ require('includes/utile.php');
                             <div  class="classynav">
                                 <ul>
                                     <li ><a href="acceuil.php">Acceuil</a></li>
-                                    <li><a href="#">Cours en ligne</a></li>
+                                    <li><a href="cours.php">Cours en ligne</a></li>
                                 </ul>
 
     
@@ -82,7 +86,7 @@ require('includes/utile.php');
         </header>
         <!-- ##### Header Area End ##### -->
 
-        <?php else :
+        <?php else:
         ?>
         <!-- ##### Header Area Start ##### -->
   <header class="header-area">
@@ -97,7 +101,7 @@ require('includes/utile.php');
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
-                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        <span class="navbarToggler"><span></span>
                     </div>
 
                     <!-- Menu -->
@@ -113,18 +117,17 @@ require('includes/utile.php');
                          <div id="a" class="classynav">
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
-                                <li><a href="#">Cours en ligne</a></li>
+                                <li><a href="cours.php">Cours en ligne</a></li>
                                 <?php if(statut()!=0):?><li><a href="espace.php" >Mon Espace</a></li> <?php else: ?><li><a  href="notification.php">Mon Espace</a></li>  <?php endif; ?>
-                                <?php if(notification()==0 && statut()==0):?>
-                                    <li><a href="#"><i class="fa fa-bell">&nbsp;</i></a></li>
+                                 <?php if(notification()==0 && statut()==0):?>
+                                 <li><a href="#"><i class="fa fa-bell">&nbsp;</i></a></li>
                                 <?php elseif(notification()!=0 && statut()==0): ?>
-                                    <li><a href="notification.php"><i class="fa fa-bell"><sup class='badge badge-danger'><?php echo notification()?></sup>&nbsp;</i></a></li> 
-                                    
-                                    
+                                <li><a href="notification.php"><i class="fa fa-bell"><sup class='badge badge-danger'><?php echo notification()?></sup>&nbsp;</i></a></li> 
+            
+            
 
                                     <?php endif;?>
                             </ul>
-
                             <!-- Register / Login -->
                             <div class="login-state d-flex align-items-center">
                                 <div class="user-name mr-30">
@@ -144,22 +147,25 @@ require('includes/utile.php');
                         </div>
                         <!-- Nav End -->
                        </header>
+                       <!-- ##### Hero Area Start ##### -->
 
 
-                    <?php endif; ?>
-         <!-- ##### Blog Area Start ##### -->
-    <section class="blog-area blog-page section-padding-100" style="background-image: url(img/bg-img/bg2.jpg); height: 350px; ;" >
-       
-         
-    </section>
-    <?php if(statut()==0):?>
-        </br></br>
+                        <?php endif; ?>
+
+
+    <!-- ##### Catagorie ##### -->
+        <div class="blog-area   bg-img d-flex align-items-center justify-content-center p-3 " <?php if($_SESSION['imgcat']!=""):?>style="background-image: url(<?php echo $_SESSION['imgcat']?>);height:280px"<?php else:?>style="background-color: lightblue;height:280px"<?php endif;?>>
+             <h3><?php echo $_SESSION['categorie']?></h3>
+         </div>
+
+    <!-- ##### Ajout Categorie ##### -->
+    <?php if(statut()==0): ?>
     <div class="load-more text-center wow fadeInUp" data-wow-delay="1000ms" >
-                        <a class="btn clever-btn btn-2" data-toggle='collapse' href='#choix2'>Ajouter Une Catégorie</a></br>
+                        <a class="btn clever-btn btn-2" data-toggle='collapse' href='#choix2'>Ajouter Une Spécialité</a></br>
                             <div class='collapse mx-auto cours' id='choix2'>
-                                <form method="POST" action="redirection/redirection-categorie.php" enctype='multipart/form-data'>
+                                <form method="POST" action="redirection/redirection-specialite.php" enctype='multipart/form-data'>
                                     <div class="form-group">
-                                      <input type="text" class="form-control form-control-sm" placeholder="Ajouter Une Catégorie" required name="domaine">
+                                      <input type="text" class="form-control form-control-sm" placeholder="Ajouter Une Spécialité" required name="specialite">
                                     </div>
                                     <div>
                                       <input type="file" class="form-control form-control-sm" id="img" hidden="true" name='img'>
@@ -169,28 +175,21 @@ require('includes/utile.php');
                             </div>
                         
                     </div>
-    <?php endif; ?>
-    <!-- ##### Blog Area End ##### -->
+        <?php endif; ?>
+            <section class="popular-courses-area section-padding-100-0">
+                    <div class="container">
+                            <div class="row">
 
-            <section class="blog-area blog-page section-padding-100">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="blog-catagories mb-70 d-flex flex-wrap justify-content-between">
-
-                    <!-- Single Catagories -->
-                   <?php include('includes/ajout-categorie.php'); ?>
-                    
-                </div>
-
-                </div>
-                </div>
-        </div></section>
-
-                   
-
-    </div>
+                             <?php
+                             include('includes/ajout-specialite.php');
+                             
+                             ?>
+        
+                             </div>
     
+                    </div>
+            </section>
+
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
         <!-- Top Footer Area -->
@@ -207,10 +206,11 @@ require('includes/utile.php');
             </div>
         </div>
     </footer>
-    <!-- ##### Footer Area End ##### -->
-    </body></html>
 
- <!-- ##### All Javascript Script ##### -->
+    
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
@@ -221,3 +221,6 @@ require('includes/utile.php');
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+</body>
+
+</html>

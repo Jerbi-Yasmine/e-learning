@@ -1,40 +1,43 @@
-<?php
-include('includes/session.php');
-require('includes/utile.php');
-
-?>
+<?php require('includes/session.php') ; include('includes/connexion.php') ; include('includes/utile.php') ;
+        $id = $_GET['id'];
+        $reponse =$bd->query("SELECT * FROM specialite WHERE id= '" . $id . "' ");
+        $entree = $reponse->fetch() ;
+        $specialite = $entree['nom'];
+         error_reporting(0);
+          $_SESSION['specialite']=$specialite;
+          $_SESSION['imgspec']=$entree['url'];
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
-
-    <!-- Title -->
-    <title>Achieve</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="img/logoo.png">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style1.css">
-
-
-</head>
-
-<body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="spinner"></div>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
     
-    <!--fin Prloader -->
-   
-<?php if ((!est_connecte())):?>
+        <!-- Title -->
+        <title>Achieve</title>
+    
+        <!-- Favicon -->
+        <link rel="icon" href="img/Logoo.png">
+    
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style1.css">
+        <link rel="stylesheet" href="style2.css">
+
+
+    
+    </head>
+    
+    <body>
+         <!-- Preloader  -->
+    
+    <!-- Preloader End -->
+    
+        <?php if ((!est_connecte())):?>
         <!-- Navbar Area -->
         <div class="clever-main-menu">
                 <div class="classy-nav-container breakpoint-off">
@@ -61,7 +64,7 @@ require('includes/utile.php');
                             <div  class="classynav">
                                 <ul>
                                     <li ><a href="acceuil.php">Acceuil</a></li>
-                                    <li><a href="#">Cours en ligne</a></li>
+                                    <li><a href="cours.php">Cours en ligne</a></li>
                                 </ul>
 
     
@@ -82,7 +85,7 @@ require('includes/utile.php');
         </header>
         <!-- ##### Header Area End ##### -->
 
-        <?php else :
+        <?php else:
         ?>
         <!-- ##### Header Area Start ##### -->
   <header class="header-area">
@@ -113,17 +116,20 @@ require('includes/utile.php');
                          <div id="a" class="classynav">
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
-                                <li><a href="#">Cours en ligne</a></li>
+                                <li><a href="cours.php">Cours en ligne</a></li>
                                 <?php if(statut()!=0):?><li><a href="espace.php" >Mon Espace</a></li> <?php else: ?><li><a  href="notification.php">Mon Espace</a></li>  <?php endif; ?>
-                                <?php if(notification()==0 && statut()==0):?>
+                                    <?php if(notification()==0 && statut()==0):?>
                                     <li><a href="#"><i class="fa fa-bell">&nbsp;</i></a></li>
                                 <?php elseif(notification()!=0 && statut()==0): ?>
                                     <li><a href="notification.php"><i class="fa fa-bell"><sup class='badge badge-danger'><?php echo notification()?></sup>&nbsp;</i></a></li> 
-                                    
-                                    
+            
+            
 
-                                    <?php endif;?>
+            <?php endif;?>
                             </ul>
+
+
+                            <!-- Register / Login -->
 
                             <!-- Register / Login -->
                             <div class="login-state d-flex align-items-center">
@@ -144,55 +150,38 @@ require('includes/utile.php');
                         </div>
                         <!-- Nav End -->
                        </header>
+                       <!-- ##### Hero Area Start ##### -->
 
 
-                    <?php endif; ?>
-         <!-- ##### Blog Area Start ##### -->
-    <section class="blog-area blog-page section-padding-100" style="background-image: url(img/bg-img/bg2.jpg); height: 350px; ;" >
-       
-         
-    </section>
-    <?php if(statut()==0):?>
-        </br></br>
+<?php endif; ?>
+    <!-- ##### Catagory ##### -->
+    <div class="clever-catagory bg-img d-flex align-items-center justify-content-center p-3" style="background-image: url();">
+        <h3><?php echo $_SESSION['specialite']?></h3>
+    </div>
+</br></br>
+ <?php if(statut()==0): ?>
     <div class="load-more text-center wow fadeInUp" data-wow-delay="1000ms" >
-                        <a class="btn clever-btn btn-2" data-toggle='collapse' href='#choix2'>Ajouter Une Catégorie</a></br>
+                        <a class="btn clever-btn btn-2" data-toggle='collapse' href='#choix2'>Ajouter Un Cours</a></br>
                             <div class='collapse mx-auto cours' id='choix2'>
-                                <form method="POST" action="redirection/redirection-categorie.php" enctype='multipart/form-data'>
+                                <form method="POST" action="includes/administrateur.php" enctype='multipart/form-data'>
                                     <div class="form-group">
-                                      <input type="text" class="form-control form-control-sm" placeholder="Ajouter Une Catégorie" required name="domaine">
+                                      <textarea  class="form-control" placeholder="Sujet Du Cours" required name="sujet"></textarea>
                                     </div>
                                     <div>
-                                      <input type="file" class="form-control form-control-sm" id="img" hidden="true" name='img'>
-                                      <label for="img" ><img class=" mx-auto"  data-toggle="tooltip" data-placement="top" title="Sélectionner une Image" src='img/camera.png'/></label></div>
+                                      <input type="file" class="form-control form-control-sm" id="cours" hidden="true" name='cours'>
+                                      <label for="cours" ><img class=" mx-auto"   src='img/download.png'/></label></div>
                                     <button type="submit"  class="btn btn-outline-secondary btn-sm mx-auto">Ajouter</button>
                                   </form>
                             </div>
                         
                     </div>
     <?php endif; ?>
-    <!-- ##### Blog Area End ##### -->
 
-            <section class="blog-area blog-page section-padding-100">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="blog-catagories mb-70 d-flex flex-wrap justify-content-between">
-
-                    <!-- Single Catagories -->
-                   <?php include('includes/ajout-categorie.php'); ?>
-                    
-                </div>
-
-                </div>
-                </div>
-        </div></section>
-
-                   
-
-    </div>
-    
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area">
+    <?php
+    include('includes/cours-public.php');
+    ?>
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area" style="margin-top:23%">
         <!-- Top Footer Area -->
         <div class="top-footer-area">
             <div class="container">
@@ -200,17 +189,15 @@ require('includes/utile.php');
                     <div class="col-12">
                         <!-- Footer Logo -->
                         <div class="footer-logo">
-                            <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
+                            <a href="acceuil.php"><p style="font-size:x-large;font-weight:bolder">Achieve</p></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- ##### Footer Area End ##### -->
-    </body></html>
 
- <!-- ##### All Javascript Script ##### -->
+    <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->

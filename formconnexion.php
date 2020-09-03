@@ -9,13 +9,15 @@
     <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Glory</title>
+    <title>Achieve</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/Logo.jpg">
+    <link rel="icon" href="img/logoo.png">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+
 
 </head>
 <body>
@@ -31,7 +33,7 @@
                     <nav class="classy-navbar justify-content-between" id="cleverNav">
     
                         <!-- Logo -->
-                        <a class="nav-brand" href="acceuil.php"><img src="img\Logoo.jpg" alt=""></a>
+                        <a class="nav-brand" href="acceuil.php"><img src="img\logo.png" alt=""></a>
     
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -71,8 +73,8 @@
         </header>
         <!-- ##### Header Area End ##### -->
         <!-- ##### Header Area End ##### -->
-  <div class="container" style="width: 10cm;height: 10cm;border: solid;border-width: 0.05cm;margin-top:2.5cm;">
-    <h1 style="font-family:candara ">Inscription</h1>
+  <div class="container" id='connexion' >
+    <h1  class='titre' >Inscription</h1>
           <form action="formconnexion.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <label for="email">Adresse E-mail</label>
@@ -104,7 +106,7 @@
 </div></br>
 
  <!-- ##### Footer Area Start ##### -->
- <footer class="footer-area">
+ <footer class="footer-area" style="margin-top:8%">
     <!-- Top Footer Area -->
     <div class="top-footer-area">
         <div class="container">
@@ -112,7 +114,7 @@
                 <div class="col-12">
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
+                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
                     </div>
                 </div>
             </div>
@@ -120,34 +122,7 @@
     </div>
 </footer><!-- ##### Footer Area Start ##### -->
 
-<!--Modal login -->
-<div class="container">      
-    <div class="modal fade" id="login">
-      <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 style="font-family:candara;margin-left: 3.5cm;">Connexion</h1>
-  </div>
-          <div class="modal-body">
-            <form  >
-              <div class="form-group">
-                <label for="mail">Adresse E-mail</label>
-                <input type="text" class="form-control form-control-sm" id="mail" required >
-              </div>
-              <div class="form-group">
-                <label for="passwd">Mot de Passe</label>
-                <input type="password" class="form-control form-control-sm" id="passwd" required>
-              </div> 
-              <hr>
-              <button type="submit" class="btn btn-success btn-lg btn-block">Connexion</button>
-              
-            </form>
-        </div>
-  
-      </div>
-    </div>
-  
-  </div>
+
 
 
  <!-- ##### All Javascript Script ##### -->

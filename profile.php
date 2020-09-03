@@ -1,11 +1,10 @@
 <?php
 //error_reporting(0);
 include('includes/session.php') ;
-include('includes/cours-bd.php') ;
 require('includes/connexion.php');
-require('includes/informations.php');
+require('includes/utile.php');
 
-if(statut()!=1) header('location:../formconnexion.php') ?>
+if(!est_connecte()) header('location:acceuil.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,10 +16,10 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
     <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Glory</title>
+    <title>Achieve</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="img/Logo.jpg">
+    <link rel="icon" href="img/logoo.png">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
@@ -32,7 +31,7 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
   
 
          <!-- ##### Header Area Start ##### -->
-  <header class="header-area">
+        <header class="header-area">
         <!-- Navbar Area -->
         <div class="clever-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -40,7 +39,7 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="acceuil.php"><img src="img/logoo.jpg" alt=""></a>
+                    <a class="nav-brand" href="acceuil.php"><img src="img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -61,20 +60,24 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
                             <ul>
                                 <li ><a href="acceuil.php">Acceuil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
-    <li><a <?php if(statut()==1):?> href="espace.php" <?php elseif (statut()==2): ?>href="espace-etudiant.php" <?php else: ?> href="administrateur.php" <?php endif; ?> >Mon Espace&nbsp;&nbsp;</a></li>
+                                <li><a href="cours.php">Cours en ligne</a></li>
+                                <?php if(statut()!=0):?><li><a href="espace.php" >Mon Espace</a></li> <?php else: ?><li><a  href="notification.php">Mon Espace</a></li>  <?php endif; ?>
+                                <?php if(notification()==0 && statut()==0):?>
+                                    <li><a href="#"><i class="fa fa-bell">&nbsp;</i></a></li>
+                                <?php elseif(notification()!=0 && statut()==0): ?>
+                                    <li><a href="notification.php"><i class="fa fa-bell"><sup class='badge badge-danger'><?php echo notification()?></sup>&nbsp;</i></a></li> 
+            
+            
 
+                                <?php endif;?>
                             </ul>
-
-
-                            <!-- Register / Login -->
-
                             <!-- Register / Login -->
                             <div class="login-state d-flex align-items-center">
                                 <div class="user-name mr-30">
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (est_connecte()) echo $_SESSION['nom'];?></a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                            <a class="dropdown-item" href="profile.html">Profile</a>
+                                            <a class="dropdown-item" href="profile.php">Profile</a>
                                             <a type="submit" href="includes/deconnexion.php"class="dropdown-item"  name="deconnexion">Déconnexion</a>
                 
                                         </div>
@@ -89,9 +92,9 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
                         <!-- Nav End -->
                        </header> </br></br>
         <!-- ##### Header Area End ##### -->
-  <div class="container1" >
-  <img src="img/utilisateur.png" class="user"/></br></br>
-  <h6 id='inf'>Informations</h6>
+            <div class="container1" >
+            <img src="img/utilisateur.png" class="user"/></br></br>
+            <h6 id='inf'>Informations</h6>
 
           <table>
             <tr class="row1">
@@ -110,7 +113,7 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
             </tr>
           </table>
       </div>
-</br></br></br>
+        </br></br></br></br>
 
  <!-- ##### Footer Area Start ##### -->
  <footer class="footer-area">
@@ -121,7 +124,7 @@ if(statut()!=1) header('location:../formconnexion.php') ?>
                 <div class="col-12">
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Glory</p></a>
+                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
                     </div>
                 </div>
             </div>
