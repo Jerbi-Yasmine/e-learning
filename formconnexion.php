@@ -74,7 +74,7 @@
         <!-- ##### Header Area End ##### -->
         <!-- ##### Header Area End ##### -->
   <div class="container" id='connexion' >
-    <h1  class='titre' >Inscription</h1>
+    <h1  class='titre' >Connexion</h1>
           <form action="formconnexion.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <label for="email">Adresse E-mail</label>

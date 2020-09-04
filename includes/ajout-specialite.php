@@ -32,7 +32,7 @@ if(isset($_POST['specialite']))
 $reponse =$bd->query("SELECT * FROM specialite WHERE categorie= '" . $_SESSION['categorie'] . "' ");
   while ($entree = $reponse->fetch()) 
  {
-     
+    $cat=$_SESSION['categorie']; 
     $id = $entree['id']; 
      echo "<!-- Single Popular Course -->
      <div class='col-12 col-md-4 col-lg-4'>
@@ -41,7 +41,7 @@ $reponse =$bd->query("SELECT * FROM specialite WHERE categorie= '" . $_SESSION['
         else echo " <img src='img/books.png' style='height:4.6cm' alt=''";
             echo "<!-- Course Content -->
             <div class='course-content'>
-                <a href='specialite.php?id=$id'><h4 class='text-center'>".ucfirst($entree['nom'])."</h4></a>
+                <a href='specialite.php?id=$id?sec=$cat[3]sed4th'><h4 class='text-center'>".ucfirst($entree['nom'])."</h4></a>
                 <a href='#' ><p class='text-center'>".ucfirst($_SESSION['categorie'])."</p></a>
             </div>
            

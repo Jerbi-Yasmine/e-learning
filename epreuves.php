@@ -1,5 +1,5 @@
 <?php include('includes/session.php') ; include('includes/connexion.php') ; include('includes/utile.php');
-if(statut()!=2) header('location:acceuil.php');
+if(statut()!=1) header('location:acceuil.php');
         ?>
 <!DOCTYPE html>
 <html lang="en">

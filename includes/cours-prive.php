@@ -26,7 +26,7 @@ include('utile.php');
                         $entree['titre']."  </h6>";
                         
                        if($entree['genre']==1) echo "<small class ='text-muted'>".format($entree['date'])."  </small></br><small class ='text-muted'> Date Limite :".format($entree['limite'])."&nbsp;&nbsp;</small>";
-                       if($entree['genre']==1) echo "<a href='epreuves.php?id=".$entree['id']."'></br><small class ='text-muted'><u>Corriger Les comptes rendus</small></u></a>";
+                       if($entree['genre']==1) echo "<a href='epreuves.php?id=".$entree['id']."?sec=h83gut".$utilisateur[0]."nzx'></br><small class ='text-muted'><u>Corriger Les comptes rendus</small></u></a>";
                         echo" </div>
                          </form>
 

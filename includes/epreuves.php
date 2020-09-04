@@ -9,7 +9,7 @@ include('session.php');
         {
             $name = $_FILES['fich']['name'][$i];
             $size = $_FILES['fich']['size'][$i];
-            if(isset ($name) && $size<2097152)
+            if(!empty ($name) && $size<2097152)
             {
                 $reponse =$bd->query("SELECT * FROM cours ");
                 $j=($reponse->rowCount())+1;

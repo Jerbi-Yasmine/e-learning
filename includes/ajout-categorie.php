@@ -34,7 +34,7 @@ $reponse =$bd->query("SELECT * FROM domaine");
     $matiere = $entree['nom'] ;
      echo "
      <div  class='single-catagories bg-img cat' style='background-image: url(".$entree['url'].");'>
-         <a href='categorie.php?id=$id'>
+         <a href='categorie.php?id=$id?sec=gt874jh$matiere[0]hhjuy54'>
              <h6 >".$entree['nom']."</h6>
          </a>
      </div>

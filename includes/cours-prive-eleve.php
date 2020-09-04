@@ -64,6 +64,14 @@ function url_rendu($id)
                         download><span><img src='img/telechargement.png'/></span></a>";
                         if(($entree['genre']==1) && get_id($entree['id']) )echo"</br><small class='text-muted'><u><a data-toggle='collapse' href='#supp$i'>Envoyer Votre Compte Rendu</a></u></small>";
                         if(($entree['genre']==1) && !get_id($entree['id']) )echo"<small class='text-muted'><form method='POST' action='includes/supp-epreuve.php'><input type='hidden' name='i' value=".$entree['id']."><a target='_blank' href='".url_rendu($entree['id'])."' class='btn btn-sm btn-outline-secondary'>Compte Rendu</a>&nbsp;&nbsp;<button class='btn btn-sm btn-outline-secondary'type='submit'><b>x</b></button></form></small>";
+                        {
+                            $reponse2 =$bd->query("SELECT * FROM rendus where ep='".$entree['id']."' and etudiant='".$_SESSION['nom']."'");
+                            $entree2=$reponse2->fetch();
+                            if($entree2['note']!="") echo "<b style='color:#CF3868'>Noté : ".$entree2['note']."</b>";
+                            if($entree2['remarque']!="") echo "<b style='color:#CF3868'> (Rq:  ".$entree2['remarque']." )<b>";
+
+
+                        }
                         if($entree['genre']==1) echo "<div class='collapse mx-auto' id='supp$i'>
                         <form  method='POST' action='includes/rendu.php' enctype='multipart/form-data'>
                                 <div class='row'>

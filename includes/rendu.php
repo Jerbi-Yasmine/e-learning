@@ -2,7 +2,7 @@
     include('session.php');
     $rec = $_POST['rec'];
     $name = $_FILES['fich'.$rec]['name'];
-    if(isset($name) && $size<2097152)  
+    if(!empty($name) && $size<2097152)  
     {
         $size = $_FILES['fich'.$rec]['size'];
         include('connexion.php') ;

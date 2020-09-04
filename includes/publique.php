@@ -10,7 +10,7 @@ include('../includes/connexion.php') ;
         {
             $name = $_FILES['fich2']['name'][$i];
             $size =  $_FILES['fich2']['size'][$i];
-            if(isset($name) && $size<2097152)
+            if(!empty($name) && $size<2097152)
             {
                 $reponse =$bd->query("SELECT * FROM demande ");
                 $j=($reponse->rowCount())+1;

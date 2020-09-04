@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 03 sep. 2020 à 22:03
+-- Généré le :  ven. 04 sep. 2020 à 04:45
 -- Version du serveur :  10.1.36-MariaDB
 -- Version de PHP :  7.2.11
 
@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cours` (
-  `id` bigint(255) NOT NULL,
+  `id` int(255) NOT NULL,
   `matiere` varchar(30) NOT NULL,
   `prof` varchar(30) NOT NULL,
   `titre` varchar(50) NOT NULL,
   `nom` varchar(30) NOT NULL,
-  `url` varchar(250) NOT NULL,
+  `url` text NOT NULL,
   `date` datetime(6) NOT NULL,
   `limite` datetime(6) NOT NULL,
   `genre` int(1) NOT NULL
@@ -51,7 +51,7 @@ CREATE TABLE `demande` (
   `nom` varchar(250) NOT NULL,
   `prof` varchar(250) NOT NULL,
   `url` varchar(250) NOT NULL,
-  `commentaire` varchar(250) NOT NULL
+  `commentaire` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -61,9 +61,9 @@ CREATE TABLE `demande` (
 --
 
 CREATE TABLE `domaine` (
-  `id` bigint(255) NOT NULL,
+  `id` int(255) NOT NULL,
   `nom` varchar(50) NOT NULL,
-  `url` varchar(80) NOT NULL
+  `url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -73,7 +73,7 @@ CREATE TABLE `domaine` (
 --
 
 CREATE TABLE `matiere` (
-  `id` bigint(255) NOT NULL,
+  `id` int(255) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prof` varchar(50) NOT NULL,
   `acces` text NOT NULL
@@ -86,9 +86,9 @@ CREATE TABLE `matiere` (
 --
 
 CREATE TABLE `personne` (
-  `id` bigint(255) NOT NULL,
+  `id` int(255) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `mdp` varchar(300) NOT NULL,
+  `mdp` text NOT NULL,
   `nom` varchar(30) NOT NULL,
   `statut` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -98,7 +98,7 @@ CREATE TABLE `personne` (
 --
 
 INSERT INTO `personne` (`id`, `email`, `mdp`, `nom`, `statut`) VALUES
-(1, 'Achieve@achieve.com', '$2y$10$UlStC1Ho1aDiQcQ2Sg0tMe0zXB3ss0obj5r7j1xvFM4qqTaMzGo.G', 'Achieve', 0);
+(1, 'Achieve@achieve.com', '$2y$10$R65DXq75lp3ybTaACK3wk.AjKtF28QwcQ.Fwvm8Y1/AAfskR.oKtS', 'Achieve', 0);
 
 -- --------------------------------------------------------
 
@@ -107,12 +107,12 @@ INSERT INTO `personne` (`id`, `email`, `mdp`, `nom`, `statut`) VALUES
 --
 
 CREATE TABLE `public` (
-  `id` bigint(255) NOT NULL,
-  `url` varchar(90) NOT NULL,
+  `id` int(255) NOT NULL,
+  `url` text NOT NULL,
   `prof` varchar(50) NOT NULL,
   `categorie` varchar(100) NOT NULL,
   `matiere` varchar(100) NOT NULL,
-  `sujet` varchar(100) NOT NULL
+  `sujet` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -122,13 +122,13 @@ CREATE TABLE `public` (
 --
 
 CREATE TABLE `rendus` (
-  `id` bigint(255) NOT NULL,
+  `id` int(255) NOT NULL,
   `etudiant` varchar(250) NOT NULL,
   `date` datetime(6) NOT NULL,
   `matiere` varchar(200) NOT NULL,
   `prof` varchar(200) NOT NULL,
   `fich` varchar(50) NOT NULL,
-  `url` varchar(50) NOT NULL,
+  `url` text NOT NULL,
   `ep` bigint(250) NOT NULL,
   `remarque` varchar(255) NOT NULL,
   `note` varchar(6) NOT NULL
@@ -141,10 +141,10 @@ CREATE TABLE `rendus` (
 --
 
 CREATE TABLE `specialite` (
-  `id` bigint(255) NOT NULL,
+  `id` int(255) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `categorie` varchar(50) NOT NULL,
-  `url` varchar(50) NOT NULL
+  `url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -207,7 +207,7 @@ ALTER TABLE `specialite`
 -- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `demande`
@@ -219,37 +219,37 @@ ALTER TABLE `demande`
 -- AUTO_INCREMENT pour la table `domaine`
 --
 ALTER TABLE `domaine`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `personne`
 --
 ALTER TABLE `personne`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `public`
 --
 ALTER TABLE `public`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `rendus`
 --
 ALTER TABLE `rendus`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `specialite`
 --
 ALTER TABLE `specialite`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
