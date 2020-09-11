@@ -64,7 +64,7 @@ include ('includes/compteur.php');
                             <!-- Nav Start -->
                             <div id="a" class="classynav">
                                 <ul>
-                                    <li ><a href="#">Acceuil</a></li>
+                                    <li ><a href="#">Accueil</a></li>
                                     <li><a href="cours.php">Cours en ligne</a></li>
                                 </ul>
 
@@ -114,7 +114,7 @@ include ('includes/compteur.php');
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="acceuil.php"><img src="img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="#"><img src="img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -131,7 +131,7 @@ include ('includes/compteur.php');
                          <!-- Nav Start -->
                          <div id="a" class="classynav">
                             <ul>
-                                <li ><a href="#">Acceuil</a></li>
+                                <li ><a href="#">Accueil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
                                 <?php if(statut()!=0):?><li><a href="espace.php" >Mon Espace</a></li> <?php else: ?><li><a  href="notification.php">Mon Espace</a></li>  <?php endif; ?>
                                 <?php if(notification()==0 && statut()==0):?>

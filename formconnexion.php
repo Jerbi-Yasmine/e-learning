@@ -1,3 +1,7 @@
+<?php
+include('includes/session.php'); 
+if(est_connecte()) header('location:accueil.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +37,7 @@
                     <nav class="classy-navbar justify-content-between" id="cleverNav">
     
                         <!-- Logo -->
-                        <a class="nav-brand" href="acceuil.php"><img src="img\logo.png" alt=""></a>
+                        <a class="nav-brand" href="accueil.php"><img src="img\logo.png" alt=""></a>
     
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -51,7 +55,7 @@
                             <!-- Nav Start -->
                             <div id="a" class="classynav">
                                 <ul>
-                                    <li ><a href="acceuil.php">Acceuil</a></li>
+                                    <li ><a href="accueil.php">Accueil</a></li>
                                     <li><a href="cours.php">Cours en ligne</a></li>
                                 </ul>
 
@@ -87,7 +91,6 @@
             <hr>
 
             <?php 
-    include('includes/session.php');
     if(authentification())
     echo"<div class='text-danger' style='margin-left : 1.5cm;'><b>Mot de Passe ou E-mail Incorrecte</b></div>            ";
 
@@ -114,7 +117,7 @@
                 <div class="col-12">
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
+                        <a href="accueil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
                     </div>
                 </div>
             </div>

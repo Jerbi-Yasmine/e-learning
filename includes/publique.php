@@ -25,6 +25,6 @@ include('../includes/connexion.php') ;
             
 
         }
-header('location:../acceuil.php')
+header('location:../accueil.php')
 
 ?>

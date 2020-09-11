@@ -42,7 +42,7 @@ require('includes/utile.php');
                     <nav class="classy-navbar justify-content-between" id="cleverNav">
     
                         <!-- Logo -->
-                        <a class="nav-brand" href="acceuil.php"><img src="img\logo.png" alt=""></a>
+                        <a class="nav-brand" href="accueil.php"><img src="img\logo.png" alt=""></a>
     
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -60,7 +60,7 @@ require('includes/utile.php');
                             <!-- Nav Start -->
                             <div  class="classynav">
                                 <ul>
-                                    <li ><a href="acceuil.php">Acceuil</a></li>
+                                    <li ><a href="accueil.php">Accueil</a></li>
                                     <li><a href="#">Cours en ligne</a></li>
                                 </ul>
 
@@ -93,7 +93,7 @@ require('includes/utile.php');
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="acceuil.php"><img src="img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="accueil.php"><img src="img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -112,7 +112,7 @@ require('includes/utile.php');
                          <!-- Nav Start -->
                          <div id="a" class="classynav">
                             <ul>
-                                <li ><a href="acceuil.php">Acceuil</a></li>
+                                <li ><a href="accueil.php">Accueil</a></li>
                                 <li><a href="#">Cours en ligne</a></li>
                                 <?php if(statut()!=0):?><li><a href="espace.php" >Mon Espace</a></li> <?php else: ?><li><a  href="notification.php">Mon Espace</a></li>  <?php endif; ?>
                                 <?php if(notification()==0 && statut()==0):?>
@@ -200,7 +200,7 @@ require('includes/utile.php');
                     <div class="col-12">
                         <!-- Footer Logo -->
                         <div class="footer-logo">
-                            <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
+                            <a href="accueil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ include('includes/session.php') ;
 require('includes/connexion.php');
 require('includes/utile.php');
 
-if(!est_connecte()) header('location:acceuil.php') ?>
+if(!est_connecte()) header('location:accueil.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +39,7 @@ if(!est_connecte()) header('location:acceuil.php') ?>
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="acceuil.php"><img src="img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="accueil.php"><img src="img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -58,7 +58,7 @@ if(!est_connecte()) header('location:acceuil.php') ?>
                          <!-- Nav Start -->
                          <div id="a" class="classynav">
                             <ul>
-                                <li ><a href="acceuil.php">Acceuil</a></li>
+                                <li ><a href="accueil.php">Accueil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
                                 <?php if(statut()!=0):?><li><a href="espace.php" >Mon Espace</a></li> <?php else: ?><li><a  href="notification.php">Mon Espace</a></li>  <?php endif; ?>
@@ -124,7 +124,7 @@ if(!est_connecte()) header('location:acceuil.php') ?>
                 <div class="col-12">
                     <!-- Footer Logo -->
                     <div class="footer-logo">
-                        <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
+                        <a href="accueil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
                     </div>
                 </div>
             </div>

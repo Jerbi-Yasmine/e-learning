@@ -4,7 +4,7 @@ include('includes/session.php') ;
 include('includes/cours-bd.php') ;
 require('includes/connexion.php'); 
 include('includes/utile.php');
-if(!est_connecte() || (statut()!=0)) header('location:acceuil.php') ;
+if(!est_connecte() || (statut()!=0)) header('location:accueil.php') ;
 $pos = strripos($_SERVER['HTTP_REFERER'],"/");
 $u = substr($_SERVER['HTTP_REFERER'],$pos+1,strlen($_SERVER['HTTP_REFERER']));
 $u1 = substr($_SERVER['PHP_SELF'],$pos+1,strlen($_SERVER['PHP_SELF']));
@@ -49,7 +49,7 @@ if((statut()==0) && (($u!="notification.php"))) header('location:notification.ph
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="acceuil.php"><img src="img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="accueil.php"><img src="img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -68,7 +68,7 @@ if((statut()==0) && (($u!="notification.php"))) header('location:notification.ph
                          <!-- Nav Start -->
                          <div id="a" class="classynav">
                             <ul>
-                                <li ><a href="acceuil.php">Acceuil</a></li>
+                                <li ><a href="accueil.php">Accueil</a></li>
                                 <li><a href="cours.php">Cours en Ligne</a></li>
                                 <li><a href="notification.php">Mon Espace</a></li>
                                 <li><a <?php  if(notification()==0):?> href="#"<?php else: ?> href="notification.php" <?php endif; ?> ><i class="fa fa-bell"><?php if(notification()!=0) echo "<sup class='badge badge-danger'>".notification()."</sup>"; ?></i>&nbsp;&nbsp;</a></li>

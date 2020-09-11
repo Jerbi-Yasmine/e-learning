@@ -1,5 +1,5 @@
 <?php include('includes/session.php') ; include('includes/connexion.php') ; include('includes/utile.php');
-if(statut()!=1) header('location:acceuil.php');
+if(statut()!=1) header('location:accueil.php');
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@ if(statut()!=1) header('location:acceuil.php');
                 <nav class="classy-navbar justify-content-between" id="cleverNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="acceuil.php"><img src="img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="accueil.php"><img src="img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -62,7 +62,7 @@ if(statut()!=1) header('location:acceuil.php');
                          <!-- Nav Start -->
                          <div id="a" class="classynav">
                             <ul>
-                                <li ><a href="acceuil.php">Acceuil</a></li>
+                                <li ><a href="accueil.php">Accueil</a></li>
                                 <li><a href="cours.php">Cours en ligne</a></li>
                                 <li><a  href="espace.php" > Mon Espace&nbsp;&nbsp;</a></li>
 
@@ -160,7 +160,7 @@ if(statut()!=1) header('location:acceuil.php');
                     <div class="col-12">
                         <!-- Footer Logo -->
                         <div class="footer-logo">
-                            <a href="acceuil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
+                            <a href="accueil.php"><p style="font-size: xx-large;font-weight: bolder;">Achieve</p></a>
                         </div>
                     </div>
                 </div>

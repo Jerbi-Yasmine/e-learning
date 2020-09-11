@@ -8,6 +8,8 @@ if(($tab[$i])==$u) return true;
 }
 return false;
 }
+
+
 // a_acces() retourne si l'etudiant a acces à une Matiére
 function a_acces()
 {

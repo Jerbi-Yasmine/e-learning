@@ -20,7 +20,7 @@ function authentification()
                 session_start() ;
                 $_SESSION['utilisateur'] = $_POST['email'];
                 chdir("../");
-                header("location:acceuil.php");
+                header("location:accueil.php");
     
         }
        else 

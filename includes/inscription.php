@@ -30,7 +30,7 @@ function inscription()
             
            
         $_SESSION['utilisateur'] = $_POST['email'] ;
-        header("location:acceuil.php");
+        header("location:accueil.php");
 
     }
        }
