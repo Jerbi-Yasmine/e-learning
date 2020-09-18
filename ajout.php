@@ -108,7 +108,9 @@ if((statut()==0) && (($u!="notification.php"))) header('location:notification.ph
                         <option value=''>Choisir l'emplacement du cours</option>";
                         while ($entree = $reponse->fetch()) 
                         {
-                            echo "<option value=".$entree['nom']."*".$entree['categorie'].">".$entree['nom']."<span> ( ".$entree['categorie']." ) </span></option>";
+                            $cat = str_replace(" ",":::-",$entree['categorie']) ;
+                            $specialite = str_replace(" ",":::-",$entree['nom']) ;
+                            echo "<option value=".$cat."*".$specialite.">".$entree['nom']."<span> ( ".$entree['categorie']." ) </span></option>";
                             
                         }
                         echo "</select></br></br>
@@ -127,9 +129,8 @@ if((statut()==0) && (($u!="notification.php"))) header('location:notification.ph
                         if(isset($_POST['list']))
                         {
                             $tab = explode("*", $_POST['list']);
-
                             $rep = $bd->exec("INSERT INTO public (url,prof,categorie,matiere,sujet)
-                            VALUES('".$url."','".$prof."','".$tab[1]."','".$tab[0]."','".$_POST['desc']."')");
+                            VALUES('".$url."','".$prof."','".$tab[0]."','".$tab[1]."','".$_POST['desc']."')");
                             $bd->exec("DELETE FROM demande WHERE id='".$id."'");
                             
                         }

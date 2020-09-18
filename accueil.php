@@ -238,7 +238,7 @@ include ('includes/compteur.php');
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-12">
-                                    <input type='file' hidden='hidden' id='fich2' name="fich2[]" multiple>
+                                    <input type='file' hidden='hidden' id='fich2' name="fich2" >
                                             <label for='fich2' class='bouton' >
                                             <img src='img\iplusb.png'>
                                         </label></br>
@@ -306,7 +306,7 @@ include ('includes/compteur.php');
     <script src="js/active.js"></script>
     <script>
         document.getElementById('fich2').addEventListener('change', function() {
-        document.getElementById("fichier").innerHTML =this.files.length+" fichier(s) prêt(s) à partager";
+        document.getElementById("fichier").innerHTML =this.files.length+" fichier prêt à partager";
         });
     </script>
 </body>

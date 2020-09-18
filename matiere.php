@@ -136,7 +136,7 @@
                                        
                                         <div class='collapse' id='choix2'>
                                             <form class='md-form' id='formfichier' method='POST' action='includes/documents.php' enctype='multipart/form-data'>
-                                                <input type='file' hidden='hidden' id='fich1' name='fich1[]' multiple>
+                                                <input type='file' hidden='hidden' id='fich1' name='fich1' >
                                                     <label for='fich1' class="bouton"><img src='img/download.png'>
         
                                                 </label>
@@ -167,7 +167,7 @@
                     
                                         <div class='collapse' id='choix4'>
                                             <form class='md-form' id='formfichier' method='POST' action='includes/epreuves.php' enctype='multipart/form-data'>
-                                                <input type='file' hidden='hidden' id='fich' name='fich[]' multiple>
+                                                <input type='file' hidden='hidden' id='fich' name='fich' >
                                                     <label for='fich' class="bouton"><img src='img/download.png'>
         
                                                 </label>
@@ -226,10 +226,10 @@
                 <script src='js/active.js'></script>
                 <script >
                 document.getElementById('fich').addEventListener('change', function() {
-                document.getElementById('fichier').innerHTML =this.files.length+' fichier(s) prêt(s) à partager';
+                document.getElementById('fichier').innerHTML =this.files.length+' fichier prêt à partager';
                 });
                 document.getElementById('fich1').addEventListener('change', function() {
-                document.getElementById('fichier1').innerHTML =this.files.length+' fichier(s) prêt(s) à partager';
+                document.getElementById('fichier1').innerHTML =this.files.length+' fichier prêt à partager';
                 });
                 </script>
         

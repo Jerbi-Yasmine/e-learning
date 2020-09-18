@@ -18,7 +18,9 @@ function image($cours)
     $i=0;
     while ($entree = $reponse->fetch()) 
      {
-         if(($entree['categorie']==$_SESSION['categorie']) && ($entree['matiere']==$_SESSION['specialite'] ) ) {
+         $categorie = str_replace(":::-"," ",$entree['categorie']);
+         $specialite = str_replace(":::-"," ",$entree['matiere']);
+         if(($categorie==$_SESSION['categorie']) && ($specialite==$_SESSION['specialite'] ) ) {
         echo"
         <form action='includes/cours-public.php' method='POST'>
         <div class='regular-page-area '>
