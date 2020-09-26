@@ -57,7 +57,7 @@ function url_rendu($id)
                              $entree['titre']."  </h6></a>
                             <small class ='text-muted'>".format($entree['date'])."</small> <a class='pull-right' href=".$entree['url']." 
                             download><span><img src='img/telechargement.png'/></span></a>";
-                        else echo " a lancé une nouvelle epreuve : ".
+                        else echo "a lancé une nouvelle epreuve : ".
                         $entree['titre']."  </h6>
                        <small class ='text-muted'>".format($entree['date'])."  </small></br><small class ='text-muted'> Date Limite :".format($entree['limite'])."</small>
                        <a class='pull-right' href=".$entree['url']." 

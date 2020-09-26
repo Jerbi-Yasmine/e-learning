@@ -45,7 +45,18 @@ function image($cours)
             </div>
         </div>
     </div> </br>" ;
-    if(isset($_POST['supprimer'.($i)])) {$bd->exec("DELETE FROM public WHERE id='".$entree['id']."' AND categorie='".$_SESSION['categorie']."' AND matiere='".$_SESSION['specialite']."' AND sujet='".$entree['sujet']."'");header('location:'.$_SERVER['HTTP_REFERER']);}
+    if(isset($_POST['supprimer'.($i)])) {
+        if(strcmp($entree['prof'],"Achieve")!=0)
+        {
+        $c = $entree['categorie'] ;
+         $s = $entree['matiere'] ;
+        }
+        else 
+        {
+            $c = $_SESSION['categorie'] ;
+            $s = $_SESSION['specialite'] ;
+        }
+        $bd->exec("DELETE FROM public WHERE id='".$entree['id']."' AND categorie='".$c."' AND matiere='".$s."' AND sujet='".$entree['sujet']."'");header('location:'.$_SERVER['HTTP_REFERER']);}
     $i=$i+1;
 
 

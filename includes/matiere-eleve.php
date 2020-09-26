@@ -2,11 +2,11 @@
 include('acces.php');
 $reponse =$bd->query("SELECT id FROM personne where nom= '".$_SESSION['nom']."'  ");
 $entree = $reponse->fetch();
-$id=$entree['id'];
-$reponse =$bd->query("SELECT * FROM matiere  ");
+$etudiant=$entree['id'];
+$reponse =$bd->query("SELECT * FROM matiere");
   while ($entree = $reponse->fetch()) 
  {
-     if(recherche($id,$entree['acces']))
+     if(recherche($etudiant,$entree['acces']))
      {
     $id = $entree['id']; 
     $matiere = $entree['nom'] ;
